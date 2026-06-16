@@ -138,8 +138,8 @@ body{font-family:'Poppins',sans-serif;background:#f0f4f0;min-height:100vh}
           <div class="fg"><label>फोन</label><input type="tel" id="sph" placeholder="98XXXXXXXX"></div>
           <div class="fg"><label>Email</label><input type="email" id="sem" placeholder="email@example.com"></div>
         </div>
-        <div class="fg"><label>फोटो URL (imgbb.com बाट)</label><input type="url" id="spt" placeholder="https://i.ibb.co/..."></div>
-        <button class="save-btn full" onclick="addStaff()"><i class="fas fa-plus"></i> कर्मचारी थप्नुहोस्</button>
+        <div class="fg"><label>फोटो Upload (Phone बाट)</label><input type="file" id="s-photo-file" accept="image/*" style="border:1.5px solid #e8e8e8;border-radius:10px;padding:10px;width:100%"></div><div class="fg"><label>वा Photo URL</label><input type="url" id="spt" placeholder="https://i.ibb.co/..."></div>
+        <button class="save-btn full" onclick="fbAddStaffAction()"><i class="fas fa-plus"></i> कर्मचारी थप्नुहोस्</button>
         <div class="success-msg" id="ssc"><i class="fas fa-check-circle"></i> सफलतापूर्वक थपियो!</div>
       </div>
       <div class="list-card">
@@ -155,7 +155,7 @@ body{font-family:'Poppins',sans-serif;background:#f0f4f0;min-height:100vh}
         <div class="fg"><label>शीर्षक *</label><input type="text" id="nt" placeholder="सूचनाको शीर्षक"></div>
         <div class="fg"><label>विवरण</label><textarea id="nb" placeholder="सूचनाको विवरण..."></textarea></div>
         <div class="fg"><label>प्रकार</label><select id="ntp"><option value="normal">🟢 साधारण</option><option value="urgent">🔴 जरुरी</option></select></div>
-        <button class="save-btn full" onclick="addNotice()"><i class="fas fa-plus"></i> सूचना थप्नुहोस्</button>
+        <button class="save-btn full" onclick="fbAddNoticeAction()"><i class="fas fa-plus"></i> सूचना थप्नुहोस्</button>
         <div class="success-msg" id="nsc"><i class="fas fa-check-circle"></i> सूचना थपियो!</div>
       </div>
       <div class="list-card">
@@ -171,7 +171,7 @@ body{font-family:'Poppins',sans-serif;background:#f0f4f0;min-height:100vh}
         <p style="font-size:12px;color:#777;margin-bottom:16px">💡 imgbb.com मा photo upload गरेर Direct Link copy गर्नुस्</p>
         <div class="fg"><label>फोटो URL *</label><input type="url" id="gu" placeholder="https://i.ibb.co/..."></div>
         <div class="fg"><label>Caption / विवरण</label><input type="text" id="gc" placeholder="फोटोको विवरण"></div>
-        <button class="save-btn full" onclick="addGallery()"><i class="fas fa-plus"></i> फोटो थप्नुहोस्</button>
+        <button class="save-btn full" onclick="fbAddGalleryAction()"><i class="fas fa-plus"></i> फोटो थप्नुहोस्</button>
         <div class="success-msg" id="gsc"><i class="fas fa-check-circle"></i> फोटो थपियो!</div>
       </div>
       <div class="list-card">
@@ -216,7 +216,7 @@ body{font-family:'Poppins',sans-serif;background:#f0f4f0;min-height:100vh}
           <div class="fg"><label>वर्षको अनुभव</label><input type="number" id="sty" placeholder="25"></div>
         </div>
         <div class="fg"><label>कर्जा वितरण (लाखमा)</label><input type="number" id="stl" placeholder="50"></div>
-        <button class="save-btn full" onclick="saveStats()"><i class="fas fa-save"></i> तथ्याङ्क सेभ गर्नुहोस्</button>
+        <button class="save-btn full" onclick="fbSaveStatsAction()"><i class="fas fa-save"></i> तथ्याङ्क सेभ गर्नुहोस्</button>
         <div class="success-msg" id="stsc"><i class="fas fa-check-circle"></i> अपडेट भयो!</div>
       </div>
     </div>
@@ -418,7 +418,7 @@ function editStaff(id){
   document.getElementById('sph').value=s.phone||'';
   document.getElementById('sem').value=s.email||'';
   document.getElementById('spt').value=s.photo||'';
-  var btn=document.querySelector('[onclick="addStaff()"]');
+  var btn=document.querySelector('[onclick="fbAddStaffAction()"]');
   btn.innerHTML='<i class="fas fa-save"></i> अपडेट गर्नुहोस्';
   btn.onclick=function(){updateStaff(id);};
   window.scrollTo({top:0,behavior:'smooth'});
@@ -442,7 +442,7 @@ function editNotice(id){
   document.getElementById('nt').value=n.title;
   document.getElementById('nb').value=n.body||'';
   document.getElementById('ntp').value=n.type||'normal';
-  var btn=document.querySelector('[onclick="addNotice()"]');
+  var btn=document.querySelector('[onclick="fbAddNoticeAction()"]');
   btn.innerHTML='<i class="fas fa-save"></i> अपडेट गर्नुहोस्';
   btn.onclick=function(){updateNotice(id);};
   window.scrollTo({top:0,behavior:'smooth'});
@@ -465,7 +465,7 @@ function editGallery(id){
   if(!g)return;
   document.getElementById('gu').value=g.url;
   document.getElementById('gc').value=g.caption||'';
-  var btn=document.querySelector('[onclick="addGallery()"]');
+  var btn=document.querySelector('[onclick="fbAddGalleryAction()"]');
   btn.innerHTML='<i class="fas fa-save"></i> अपडेट गर्नुहोस्';
   btn.onclick=function(){updateGallery(id);};
   window.scrollTo({top:0,behavior:'smooth'});
@@ -514,3 +514,222 @@ renderGallery=function(){
   el.innerHTML=GA.map(function(g){return '<div class="list-item"><div class="list-item-info"><strong>'+g.caption+'</strong><span style="font-size:10px">'+g.url.substring(0,40)+'...</span></div><div style="display:flex;gap:6px"><button style="background:#e3f2fd;color:#1565c0;border:none;width:32px;height:32px;border-radius:7px;cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center" onclick="editGallery('+g.id+')"><i class="fas fa-edit"></i></button><button class="del-btn" onclick="delGallery('+g.id+')"><i class="fas fa-trash"></i></button></div></div>';}).join('');
 };
 </script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc, setDoc, updateDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/12.15.0/firestore.js";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-storage.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCUc9QWivjvoLK5kixgc8B59_nh-rbCAzE",
+  authDomain: "sfacl-jetharahiya.firebaseapp.com",
+  projectId: "sfacl-jetharahiya",
+  storageBucket: "sfacl-jetharahiya.firebasestorage.app",
+  messagingSenderId: "856744984920",
+  appId: "1:856744984920:web:e62d03aaf29b87c91ce52d"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const storage = getStorage(app);
+
+// STAFF
+window.fbAddStaff = async function(data){
+  await addDoc(collection(db,'staff'),data);
+};
+window.fbUpdateStaff = async function(id,data){
+  await updateDoc(doc(db,'staff',id),data);
+};
+window.fbDeleteStaff = async function(id){
+  await deleteDoc(doc(db,'staff',id));
+};
+window.fbLoadStaff = function(callback){
+  onSnapshot(collection(db,'staff'),function(snap){
+    var ST=[];
+    snap.forEach(function(d){ST.push({id:d.id,...d.data()});});
+    callback(ST);
+  });
+};
+
+// NOTICE
+window.fbAddNotice = async function(data){
+  await addDoc(collection(db,'notices'),{...data,createdAt:Date.now()});
+};
+window.fbDeleteNotice = async function(id){
+  await deleteDoc(doc(db,'notices',id));
+};
+window.fbUpdateNotice = async function(id,data){
+  await updateDoc(doc(db,'notices',id),data);
+};
+window.fbLoadNotices = function(callback){
+  onSnapshot(collection(db,'notices'),function(snap){
+    var NO=[];
+    snap.forEach(function(d){NO.push({id:d.id,...d.data()});});
+    NO.sort(function(a,b){return b.createdAt-a.createdAt;});
+    callback(NO);
+  });
+};
+
+// GALLERY
+window.fbAddGallery = async function(data){
+  await addDoc(collection(db,'gallery'),data);
+};
+window.fbDeleteGallery = async function(id){
+  await deleteDoc(doc(db,'gallery',id));
+};
+window.fbLoadGallery = function(callback){
+  onSnapshot(collection(db,'gallery'),function(snap){
+    var GA=[];
+    snap.forEach(function(d){GA.push({id:d.id,...d.data()});});
+    callback(GA);
+  });
+};
+
+// STATS
+window.fbSaveStats = async function(data){
+  await setDoc(doc(db,'settings','stats'),data);
+};
+
+// PHOTO UPLOAD
+window.fbUploadPhoto = async function(file,path){
+  var storageRef=ref(storage,path);
+  await uploadBytes(storageRef,file);
+  return await getDownloadURL(storageRef);
+};
+
+// Load all on login
+window.fbLoadAll = function(){
+  window.fbLoadStaff(function(ST){
+    document.getElementById('staff-count').textContent=ST.length;
+    document.getElementById('staff-list').innerHTML=ST.length?ST.map(function(s){
+      return '<div class="list-item"><div class="list-item-info"><strong>'+s.name+'</strong><span>'+s.position+(s.phone?' • '+s.phone:'')+'</span></div><div style="display:flex;gap:6px"><button style="background:#e3f2fd;color:#1565c0;border:none;width:32px;height:32px;border-radius:7px;cursor:pointer" onclick="fbEditStaff(\''+s.id+'\','+JSON.stringify(s).replace(/'/g,"\\'")+')"><i class="fas fa-edit"></i></button><button class="del-btn" onclick="fbDelStaff(\''+s.id+'\')"><i class="fas fa-trash"></i></button></div></div>';
+    }).join(''):'<div class="empty-msg"><i class="fas fa-users"></i>खाली छ</div>';
+  });
+  window.fbLoadNotices(function(NO){
+    document.getElementById('notice-count').textContent=NO.length;
+    document.getElementById('notice-list').innerHTML=NO.length?NO.map(function(n){
+      return '<div class="list-item"><div class="list-item-info"><strong>'+(n.type==='urgent'?'🔴 ':'')+n.title+'</strong><span>'+n.date+'</span></div><div style="display:flex;gap:6px"><button style="background:#e3f2fd;color:#1565c0;border:none;width:32px;height:32px;border-radius:7px;cursor:pointer" onclick="fbEditNotice(\''+n.id+'\',\''+n.title+'\',\''+n.body+'\',\''+n.type+'\')"><i class="fas fa-edit"></i></button><button class="del-btn" onclick="fbDelNotice(\''+n.id+'\')"><i class="fas fa-trash"></i></button></div></div>';
+    }).join(''):'<div class="empty-msg"><i class="fas fa-bell"></i>खाली छ</div>';
+  });
+  window.fbLoadGallery(function(GA){
+    document.getElementById('gallery-count').textContent=GA.length;
+    document.getElementById('gallery-list').innerHTML=GA.length?GA.map(function(g){
+      return '<div class="list-item"><div class="list-item-info"><strong>'+g.caption+'</strong></div><div style="display:flex;gap:6px"><button class="del-btn" onclick="fbDelGallery(\''+g.id+'\')"><i class="fas fa-trash"></i></button></div></div>';
+    }).join(''):'<div class="empty-msg"><i class="fas fa-images"></i>खाली छ</div>';
+  });
+};
+
+// ACTIONS
+window.fbAddStaffAction = async function(){
+  var n=document.getElementById('sn').value.trim();
+  var p=document.getElementById('sp').value.trim();
+  if(!n||!p){alert('नाम र पद अनिवार्य!');return;}
+  
+  var photoUrl='';
+  var photoFile=document.getElementById('s-photo-file');
+  if(photoFile&&photoFile.files[0]){
+    photoUrl=await window.fbUploadPhoto(photoFile.files[0],'staff/'+Date.now());
+  } else {
+    photoUrl=document.getElementById('spt').value.trim();
+  }
+  
+  await window.fbAddStaff({name:n,position:p,phone:document.getElementById('sph').value.trim(),email:document.getElementById('sem').value.trim(),photo:photoUrl});
+  ['sn','sp','sph','sem','spt'].forEach(function(i){document.getElementById(i).value='';});
+  if(photoFile)photoFile.value='';
+  document.getElementById('ssc').style.display='flex';
+  setTimeout(function(){document.getElementById('ssc').style.display='none';},2500);
+};
+
+window.fbDelStaff = async function(id){
+  if(!confirm('मेटाउने?'))return;
+  await window.fbDeleteStaff(id);
+};
+
+window.fbEditStaff = function(id,data){
+  document.getElementById('sn').value=data.name||'';
+  document.getElementById('sp').value=data.position||'';
+  document.getElementById('sph').value=data.phone||'';
+  document.getElementById('sem').value=data.email||'';
+  document.getElementById('spt').value=data.photo||'';
+  var btn=document.querySelector('[onclick="fbAddStaffAction()"]');
+  if(btn){btn.innerHTML='<i class="fas fa-save"></i> अपडेट';btn.onclick=async function(){
+    var photoUrl=data.photo;
+    var photoFile=document.getElementById('s-photo-file');
+    if(photoFile&&photoFile.files[0]){photoUrl=await window.fbUploadPhoto(photoFile.files[0],'staff/'+Date.now());}
+    else if(document.getElementById('spt').value){photoUrl=document.getElementById('spt').value;}
+    await window.fbUpdateStaff(id,{name:document.getElementById('sn').value,position:document.getElementById('sp').value,phone:document.getElementById('sph').value,email:document.getElementById('sem').value,photo:photoUrl});
+    btn.innerHTML='<i class="fas fa-plus"></i> थप्नुहोस्';btn.onclick=window.fbAddStaffAction;
+    ['sn','sp','sph','sem','spt'].forEach(function(i){document.getElementById(i).value='';});
+  };}
+  window.scrollTo({top:0,behavior:'smooth'});
+};
+
+window.fbAddNoticeAction = async function(){
+  var t=document.getElementById('nt').value.trim();
+  if(!t){alert('शीर्षक अनिवार्य!');return;}
+  await window.fbAddNotice({title:t,body:document.getElementById('nb').value.trim(),type:document.getElementById('ntp').value,date:new Date().toLocaleDateString('ne-NP',{year:'numeric',month:'long',day:'numeric'})});
+  document.getElementById('nt').value='';document.getElementById('nb').value='';
+  document.getElementById('nsc').style.display='flex';
+  setTimeout(function(){document.getElementById('nsc').style.display='none';},2500);
+};
+
+window.fbDelNotice = async function(id){
+  if(!confirm('मेटाउने?'))return;
+  await window.fbDeleteNotice(id);
+};
+
+window.fbEditNotice = function(id,title,body,type){
+  document.getElementById('nt').value=title;
+  document.getElementById('nb').value=body;
+  document.getElementById('ntp').value=type;
+  var btn=document.querySelector('[onclick="fbAddNoticeAction()"]');
+  if(btn){btn.innerHTML='<i class="fas fa-save"></i> अपडेट';btn.onclick=async function(){
+    await window.fbUpdateNotice(id,{title:document.getElementById('nt').value,body:document.getElementById('nb').value,type:document.getElementById('ntp').value});
+    btn.innerHTML='<i class="fas fa-plus"></i> थप्नुहोस्';btn.onclick=window.fbAddNoticeAction;
+    document.getElementById('nt').value='';document.getElementById('nb').value='';
+  };}
+  window.scrollTo({top:0,behavior:'smooth'});
+};
+
+window.fbAddGalleryAction = async function(){
+  var u=document.getElementById('gu').value.trim();
+  var photoFile=document.getElementById('g-photo-file');
+  var finalUrl=u;
+  if(photoFile&&photoFile.files[0]){
+    finalUrl=await window.fbUploadPhoto(photoFile.files[0],'gallery/'+Date.now());
+  }
+  if(!finalUrl){alert('Photo वा URL अनिवार्य!');return;}
+  await window.fbAddGallery({url:finalUrl,caption:document.getElementById('gc').value.trim()||'SFACL'});
+  document.getElementById('gu').value='';document.getElementById('gc').value='';
+  if(photoFile)photoFile.value='';
+  document.getElementById('gsc').style.display='flex';
+  setTimeout(function(){document.getElementById('gsc').style.display='none';},2500);
+};
+
+window.fbDelGallery = async function(id){
+  if(!confirm('मेटाउने?'))return;
+  await window.fbDeleteGallery(id);
+};
+
+window.fbSaveStatsAction = async function(){
+  var s={members:parseInt(document.getElementById('stm').value)||500,years:parseInt(document.getElementById('sty').value)||25,loan:parseInt(document.getElementById('stl').value)||50};
+  await window.fbSaveStats(s);
+  document.getElementById('stsc').style.display='flex';
+  setTimeout(function(){document.getElementById('stsc').style.display='none';},2500);
+};
+
+// Override doLogin to load Firebase
+var _doLogin=window.doLogin;
+window.doLogin=function(){
+  var p=document.getElementById('lp').value;
+  var pw=localStorage.getItem('sf_pw')||'sfacl2060';
+  if(p===pw){
+    document.getElementById('login-page').style.display='none';
+    document.getElementById('admin-page').style.display='block';
+    window.fbLoadAll();
+  } else {
+    document.getElementById('lerr').style.display='block';
+  }
+};
+</script>
+
+

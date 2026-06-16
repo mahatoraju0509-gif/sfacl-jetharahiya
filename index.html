@@ -2047,3 +2047,79 @@ window.addEventListener('load',function(){
 });
 </script>
 
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/12.15.0/firestore.js";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-storage.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCUc9QWivjvoLK5kixgc8B59_nh-rbCAzE",
+  authDomain: "sfacl-jetharahiya.firebaseapp.com",
+  projectId: "sfacl-jetharahiya",
+  storageBucket: "sfacl-jetharahiya.firebasestorage.app",
+  messagingSenderId: "856744984920",
+  appId: "1:856744984920:web:e62d03aaf29b87c91ce52d"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const storage = getStorage(app);
+
+// REAL-TIME LISTENERS - website auto update
+onSnapshot(collection(db,'staff'),function(snap){
+  var ST=[];
+  snap.forEach(function(d){ST.push({id:d.id,...d.data()});});
+  if(ST.length){
+    var g=document.getElementById('tg');
+    if(g){
+      g.innerHTML=ST.map(function(s){
+        return '<div class="tc rv vis"><div class="tph">'+(s.photo?'<img src="'+s.photo+'" alt="'+s.name+'" onerror="this.style.display=\'none\'">':'')+'<i class="fas fa-user-circle" '+(s.photo?'style="display:none"':'')+'></i></div><div class="tin"><div class="tn">'+s.name+'</div><div class="tpos">'+s.position+'</div><div class="tcts">'+(s.phone?'<a href="tel:'+s.phone+'" class="tcl"><i class="fas fa-phone"></i>'+s.phone+'</a>':'')+(s.email?'<a href="mailto:'+s.email+'" class="tcl" style="font-size:11px"><i class="fas fa-envelope"></i>'+s.email+'</a>':'')+'</div></div></div>';
+      }).join('');
+    }
+  }
+});
+
+onSnapshot(collection(db,'notices'),function(snap){
+  var NO=[];
+  snap.forEach(function(d){NO.push({id:d.id,...d.data()});});
+  NO.sort(function(a,b){return b.createdAt-a.createdAt;});
+  var g=document.getElementById('ng');
+  if(g&&NO.length){
+    g.innerHTML=NO.map(function(n){
+      return '<div class="nc '+(n.type==='urgent'?'urg':'')+' rv vis"><span class="nbdg '+(n.type==='urgent'?'ub':'nw')+'">'+(n.type==='urgent'?'🔴 जरुरी':'🟢 नयाँ')+'</span><div class="ndt"><i class="fas fa-calendar-alt"></i> '+n.date+'</div><div class="ntl">'+n.title+'</div><div class="nbd">'+n.body+'</div></div>';
+    }).join('');
+  }
+});
+
+onSnapshot(collection(db,'gallery'),function(snap){
+  var GA=[];
+  snap.forEach(function(d){GA.push({id:d.id,...d.data()});});
+  var g=document.getElementById('gg');
+  if(g&&GA.length){
+    g.innerHTML=GA.map(function(i){
+      return '<div class="gi rv vis" onclick="openLb(\''+i.url+'\')"><img src="'+i.url+'" alt="'+i.caption+'" loading="lazy"><div class="gov"><i class="fas fa-expand-arrows-alt"></i><span>'+i.caption+'</span></div></div>';
+    }).join('');
+  }
+});
+
+onSnapshot(doc(db,'settings','stats'),function(d){
+  if(d.exists()){
+    var s=d.data();
+    var counts=document.querySelectorAll('.count');
+    if(counts[0])counts[0].dataset.target=s.members||500;
+    if(counts[1])counts[1].dataset.target=s.years||25;
+    if(counts[2])counts[2].dataset.target=s.loan||50;
+  }
+});
+
+window.fbDb=db;
+window.fbStorage=storage;
+window.fbCollection=collection;
+window.fbAddDoc=addDoc;
+window.fbDeleteDoc=deleteDoc;
+window.fbDoc=doc;
+window.fbSetDoc=setDoc;
+window.fbGetDownloadURL=getDownloadURL;
+window.fbRef=ref;
+window.fbUploadBytes=uploadBytes;
+</script>
