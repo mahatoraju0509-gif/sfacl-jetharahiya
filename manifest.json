@@ -1,0 +1,14 @@
+﻿{
+  "name": "SFACL Jetharahiya - साना किसान कृषि सहकारी",
+  "short_name": "SFACL",
+  "description": "साना किसान कृषि सहकारी संस्था लि. जेठरहिया",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a5c1a",
+  "theme_color": "#1a5c1a",
+  "orientation": "portrait",
+  "icons": [
+    {"src": "logo.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "logo.png", "sizes": "512x512", "type": "image/png"}
+  ]
+}

@@ -1,0 +1,409 @@
+﻿<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel — SFACL Jetharahiya</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Poppins',sans-serif;background:#f0f4f0;min-height:100vh}
+:root{--gd:#1a5c1a;--gm:#2e7d32;--gold:#f9a825;--red:#c62828}
+
+/* LOGIN */
+#login-page{min-height:100vh;background:linear-gradient(135deg,#051405,#1a5c1a,#2e7d32);display:flex;align-items:center;justify-content:center;padding:20px}
+.login-box{background:white;border-radius:24px;padding:48px 40px;width:100%;max-width:420px;box-shadow:0 20px 60px rgba(0,0,0,0.3);text-align:center}
+.login-logo{width:80px;height:80px;border-radius:50%;border:3px solid var(--gold);overflow:hidden;margin:0 auto 20px}
+.login-logo img{width:100%;height:100%;object-fit:cover}
+.login-box h1{font-size:22px;font-weight:800;color:var(--gd);margin-bottom:4px}
+.login-box p{font-size:13px;color:#777;margin-bottom:28px}
+.login-input{width:100%;border:1.5px solid #e0e0e0;border-radius:10px;padding:13px 16px;font-size:14px;font-family:'Poppins',sans-serif;outline:none;margin-bottom:12px;transition:all 0.3s}
+.login-input:focus{border-color:var(--gm);box-shadow:0 0 0 3px rgba(46,125,50,0.1)}
+.login-btn{width:100%;background:linear-gradient(135deg,var(--gd),var(--gm));color:white;border:none;border-radius:10px;padding:14px;font-size:15px;font-weight:700;cursor:pointer;transition:all 0.3s;font-family:'Poppins',sans-serif}
+.login-btn:hover{opacity:0.9;transform:translateY(-1px)}
+.login-err{color:var(--red);font-size:12px;margin-top:8px;display:none}
+.back-link{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,0.7);text-decoration:none;font-size:13px;margin-top:20px;transition:all 0.3s}
+.back-link:hover{color:var(--gold)}
+
+/* ADMIN DASHBOARD */
+#admin-page{display:none;min-height:100vh}
+.admin-header{background:linear-gradient(135deg,var(--gd),var(--gm));padding:16px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 4px 20px rgba(0,0,0,0.2)}
+.admin-header-left{display:flex;align-items:center;gap:12px}
+.admin-header-logo{width:42px;height:42px;border-radius:50%;border:2px solid var(--gold);overflow:hidden}
+.admin-header-logo img{width:100%;height:100%;object-fit:cover}
+.admin-header h2{font-size:16px;font-weight:800;color:white}
+.admin-header p{font-size:11px;color:rgba(255,255,255,0.65)}
+.admin-header-right{display:flex;align-items:center;gap:10px}
+.header-btn{background:rgba(255,255,255,0.15);border:none;color:white;padding:8px 16px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;font-family:'Poppins',sans-serif;transition:all 0.3s;display:flex;align-items:center;gap:6px}
+.header-btn:hover{background:rgba(255,255,255,0.25)}
+.header-btn.red{background:rgba(198,40,40,0.3)}
+
+/* TABS */
+.admin-tabs{background:white;border-bottom:2px solid #f0f0f0;display:flex;overflow-x:auto;position:sticky;top:74px;z-index:99;box-shadow:0 2px 10px rgba(0,0,0,0.05)}
+.tab-btn{flex-shrink:0;padding:16px 24px;border:none;background:transparent;font-size:13px;font-weight:600;color:#777;cursor:pointer;transition:all 0.3s;border-bottom:3px solid transparent;margin-bottom:-2px;font-family:'Poppins',sans-serif;display:flex;align-items:center;gap:8px}
+.tab-btn.active{color:var(--gd);border-bottom-color:var(--gd)}
+.tab-btn i{font-size:15px}
+
+/* CONTENT */
+.admin-content{max-width:900px;margin:0 auto;padding:28px 20px}
+.tab-section{display:none}
+.tab-section.active{display:block}
+
+/* CARDS */
+.section-title{font-size:18px;font-weight:800;color:var(--gd);margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.section-title i{color:var(--gold)}
+.form-card{background:white;border-radius:16px;padding:28px;box-shadow:0 4px 20px rgba(0,0,0,0.06);margin-bottom:24px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fg{margin-bottom:16px}
+.fg label{display:block;font-size:11px;font-weight:700;color:#555;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px}
+.fg input,.fg select,.fg textarea{width:100%;border:1.5px solid #e8e8e8;border-radius:10px;padding:11px 14px;font-size:14px;font-family:'Poppins',sans-serif;outline:none;transition:all 0.3s;background:#fafafa}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gm);box-shadow:0 0 0 3px rgba(46,125,50,0.1);background:white}
+.fg textarea{resize:vertical;min-height:80px}
+.save-btn{background:linear-gradient(135deg,var(--gd),var(--gm));color:white;border:none;border-radius:10px;padding:13px 28px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Poppins',sans-serif;transition:all 0.3s;display:inline-flex;align-items:center;gap:8px}
+.save-btn:hover{opacity:0.9;transform:translateY(-1px)}
+.save-btn.full{width:100%;justify-content:center}
+.success-msg{background:#e8f5e9;border:1px solid #a5d6a7;color:var(--gd);border-radius:8px;padding:10px 16px;font-size:13px;margin-top:12px;display:none;align-items:center;gap:8px}
+
+/* LIST */
+.list-card{background:white;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.06)}
+.list-title{font-size:15px;font-weight:700;color:var(--gd);margin-bottom:16px;display:flex;align-items:center;justify-content:space-between}
+.list-item{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-radius:10px;background:#f8f9fa;margin-bottom:10px;border:1.5px solid #eee;transition:all 0.3s}
+.list-item:hover{border-color:#c8e6c9;background:#f1f8e9}
+.list-item-info strong{display:block;font-size:14px;color:var(--gd);font-weight:700}
+.list-item-info span{font-size:12px;color:#777}
+.del-btn{background:#ffebee;color:var(--red);border:none;width:36px;height:36px;border-radius:8px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all 0.3s;flex-shrink:0}
+.del-btn:hover{background:var(--red);color:white}
+.empty-msg{text-align:center;padding:32px;color:#999;font-size:13px}
+.empty-msg i{font-size:32px;display:block;margin-bottom:8px;color:#ddd}
+
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
+.stat-card{background:white;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.06);text-align:center}
+.stat-card .num{font-size:36px;font-weight:900;color:var(--gold)}
+.stat-card .lbl{font-size:13px;color:#777;margin-top:4px}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--gd);color:white;padding:12px 28px;border-radius:30px;font-size:13px;font-weight:600;z-index:9999;transition:transform 0.3s ease;display:flex;align-items:center;gap:8px;box-shadow:0 8px 24px rgba(0,0,0,0.2)}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.toast.err{background:var(--red)}
+
+@media(max-width:600px){.form-grid{grid-template-columns:1fr}.stats-grid{grid-template-columns:1fr}.admin-content{padding:16px}}
+</style>
+</head>
+<body>
+<div id="login-page">
+  <div style="text-align:center">
+    <div class="login-box">
+      <div class="login-logo"><img src="logo.png" alt="SFACL"></div>
+      <h1>SFACL Admin Panel</h1>
+      <p>अधिकृत कर्मचारीका लागि मात्र</p>
+      <input type="text" class="login-input" placeholder="Username" id="lu" value="admin">
+      <input type="password" class="login-input" placeholder="Password" id="lp">
+      <p style="font-size:11px;color:#999;margin-bottom:12px">Default: sfacl2060</p>
+      <button class="login-btn" onclick="doLogin()"><i class="fas fa-sign-in-alt"></i> Login</button>
+      <p class="login-err" id="lerr">❌ गलत पासवर्ड!</p>
+    </div>
+    <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Website मा फर्कनुस्</a>
+  </div>
+</div>
+<div id="admin-page">
+  <div class="admin-header">
+    <div class="admin-header-left">
+      <div class="admin-header-logo"><img src="logo.png" alt="SFACL"></div>
+      <div><h2>SFACL Admin Panel</h2><p>जेठरहिया, रौतहट</p></div>
+    </div>
+    <div class="admin-header-right">
+      <button class="header-btn" onclick="window.open('index.html','_blank')"><i class="fas fa-external-link-alt"></i> Website हेर्नुस्</button>
+      <button class="header-btn red" onclick="doLogout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </div>
+  </div>
+  <div class="admin-tabs">
+    <button class="tab-btn active" onclick="swTab('staff',this)"><i class="fas fa-users"></i> Staff</button>
+    <button class="tab-btn" onclick="swTab('notice',this)"><i class="fas fa-bell"></i> Notice</button>
+    <button class="tab-btn" onclick="swTab('gallery',this)"><i class="fas fa-images"></i> Gallery</button>
+    <button class="tab-btn" onclick="swTab('loan',this)"><i class="fas fa-percentage"></i> Loan Rates</button>
+    <button class="tab-btn" onclick="swTab('stats',this)"><i class="fas fa-chart-bar"></i> Stats</button>
+    <button class="tab-btn" onclick="swTab('settings',this)"><i class="fas fa-cog"></i> Settings</button>
+  </div>
+  <div class="admin-content">
+    <!-- STAFF -->
+    <div class="tab-section active" id="tab-staff">
+      <div class="section-title"><i class="fas fa-user-plus"></i> कर्मचारी व्यवस्थापन</div>
+      <div class="form-card">
+        <h3 style="font-size:15px;color:var(--gd);margin-bottom:16px">नयाँ कर्मचारी थप्नुहोस्</h3>
+        <div class="form-grid">
+          <div class="fg"><label>नाम *</label><input type="text" id="sn" placeholder="पूरा नाम"></div>
+          <div class="fg"><label>पद *</label><input type="text" id="sp" placeholder="जस्तै: प्रबन्धक"></div>
+          <div class="fg"><label>फोन</label><input type="tel" id="sph" placeholder="98XXXXXXXX"></div>
+          <div class="fg"><label>Email</label><input type="email" id="sem" placeholder="email@example.com"></div>
+        </div>
+        <div class="fg"><label>फोटो URL (imgbb.com बाट)</label><input type="url" id="spt" placeholder="https://i.ibb.co/..."></div>
+        <button class="save-btn full" onclick="addStaff()"><i class="fas fa-plus"></i> कर्मचारी थप्नुहोस्</button>
+        <div class="success-msg" id="ssc"><i class="fas fa-check-circle"></i> सफलतापूर्वक थपियो!</div>
+      </div>
+      <div class="list-card">
+        <div class="list-title">कर्मचारी सूची <span id="staff-count" style="background:#e8f5e9;color:var(--gd);padding:2px 10px;border-radius:20px;font-size:12px">0</span></div>
+        <div id="staff-list"></div>
+      </div>
+    </div>
+    <!-- NOTICE -->
+    <div class="tab-section" id="tab-notice">
+      <div class="section-title"><i class="fas fa-plus-circle"></i> सूचना व्यवस्थापन</div>
+      <div class="form-card">
+        <h3 style="font-size:15px;color:var(--gd);margin-bottom:16px">नयाँ सूचना थप्नुहोस्</h3>
+        <div class="fg"><label>शीर्षक *</label><input type="text" id="nt" placeholder="सूचनाको शीर्षक"></div>
+        <div class="fg"><label>विवरण</label><textarea id="nb" placeholder="सूचनाको विवरण..."></textarea></div>
+        <div class="fg"><label>प्रकार</label><select id="ntp"><option value="normal">🟢 साधारण</option><option value="urgent">🔴 जरुरी</option></select></div>
+        <button class="save-btn full" onclick="addNotice()"><i class="fas fa-plus"></i> सूचना थप्नुहोस्</button>
+        <div class="success-msg" id="nsc"><i class="fas fa-check-circle"></i> सूचना थपियो!</div>
+      </div>
+      <div class="list-card">
+        <div class="list-title">सूचना सूची <span id="notice-count" style="background:#e8f5e9;color:var(--gd);padding:2px 10px;border-radius:20px;font-size:12px">0</span></div>
+        <div id="notice-list"></div>
+      </div>
+    </div>
+    <!-- GALLERY -->
+    <div class="tab-section" id="tab-gallery">
+      <div class="section-title"><i class="fas fa-image"></i> ग्यालेरी व्यवस्थापन</div>
+      <div class="form-card">
+        <h3 style="font-size:15px;color:var(--gd);margin-bottom:8px">फोटो थप्नुहोस्</h3>
+        <p style="font-size:12px;color:#777;margin-bottom:16px">💡 imgbb.com मा photo upload गरेर Direct Link copy गर्नुस्</p>
+        <div class="fg"><label>फोटो URL *</label><input type="url" id="gu" placeholder="https://i.ibb.co/..."></div>
+        <div class="fg"><label>Caption / विवरण</label><input type="text" id="gc" placeholder="फोटोको विवरण"></div>
+        <button class="save-btn full" onclick="addGallery()"><i class="fas fa-plus"></i> फोटो थप्नुहोस्</button>
+        <div class="success-msg" id="gsc"><i class="fas fa-check-circle"></i> फोटो थपियो!</div>
+      </div>
+      <div class="list-card">
+        <div class="list-title">फोटो सूची <span id="gallery-count" style="background:#e8f5e9;color:var(--gd);padding:2px 10px;border-radius:20px;font-size:12px">0</span></div>
+        <div id="gallery-list"></div>
+      </div>
+    </div>
+    <!-- LOAN RATES -->
+    <div class="tab-section" id="tab-loan">
+      <div class="section-title"><i class="fas fa-percentage"></i> ब्याजदर व्यवस्थापन</div>
+      <div class="form-card">
+        <h3 style="font-size:15px;color:var(--gd);margin-bottom:16px">कर्जाको ब्याजदर अपडेट गर्नुहोस्</h3>
+        <div class="form-grid">
+          <div class="fg"><label>कृषि कर्जा ब्याज (%)</label><input type="text" id="r1" placeholder="जस्तै: ११%"></div>
+          <div class="fg"><label>कृषि कर्जा अवधि</label><input type="text" id="p1" placeholder="जस्तै: १ वर्ष"></div>
+          <div class="fg"><label>पशुपालन कर्जा ब्याज (%)</label><input type="text" id="r2" placeholder="जस्तै: १२%"></div>
+          <div class="fg"><label>पशुपालन कर्जा अवधि</label><input type="text" id="p2" placeholder="जस्तै: २ वर्ष"></div>
+          <div class="fg"><label>घर कर्जा ब्याज (%)</label><input type="text" id="r3" placeholder="जस्तै: १३%"></div>
+          <div class="fg"><label>घर कर्जा अवधि</label><input type="text" id="p3" placeholder="जस्तै: ५ वर्ष"></div>
+          <div class="fg"><label>व्यवसाय कर्जा ब्याज (%)</label><input type="text" id="r4" placeholder="जस्तै: १३.५%"></div>
+          <div class="fg"><label>व्यवसाय कर्जा अवधि</label><input type="text" id="p4" placeholder="जस्तै: ३ वर्ष"></div>
+        </div>
+        <button class="save-btn full" onclick="saveRates()"><i class="fas fa-save"></i> ब्याजदर सेभ गर्नुहोस्</button>
+        <div class="success-msg" id="rsc"><i class="fas fa-check-circle"></i> ब्याजदर अपडेट भयो!</div>
+      </div>
+      <div class="form-card">
+        <h3 style="font-size:15px;color:var(--gd);margin-bottom:16px">अहिलेको ब्याजदर</h3>
+        <div id="cur-rates"></div>
+      </div>
+    </div>
+<!-- STATS -->
+    <div class="tab-section" id="tab-stats">
+      <div class="section-title"><i class="fas fa-chart-bar"></i> तथ्याङ्क अपडेट</div>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="num" id="cur-m">500</div><div class="lbl">कुल सदस्य</div></div>
+        <div class="stat-card"><div class="num" id="cur-y">25</div><div class="lbl">वर्षको अनुभव</div></div>
+        <div class="stat-card"><div class="num" id="cur-l">50</div><div class="lbl">कर्जा (लाखमा)</div></div>
+      </div>
+      <div class="form-card">
+        <div class="form-grid">
+          <div class="fg"><label>कुल सदस्य</label><input type="number" id="stm" placeholder="500"></div>
+          <div class="fg"><label>वर्षको अनुभव</label><input type="number" id="sty" placeholder="25"></div>
+        </div>
+        <div class="fg"><label>कर्जा वितरण (लाखमा)</label><input type="number" id="stl" placeholder="50"></div>
+        <button class="save-btn full" onclick="saveStats()"><i class="fas fa-save"></i> तथ्याङ्क सेभ गर्नुहोस्</button>
+        <div class="success-msg" id="stsc"><i class="fas fa-check-circle"></i> अपडेट भयो!</div>
+      </div>
+    </div>
+    <!-- SETTINGS -->
+    <div class="tab-section" id="tab-settings">
+      <div class="section-title"><i class="fas fa-cog"></i> Settings</div>
+      <div class="form-card">
+        <h3 style="font-size:15px;color:var(--gd);margin-bottom:16px"><i class="fas fa-key" style="color:var(--gold)"></i> पासवर्ड परिवर्तन</h3>
+        <div class="fg"><label>पुरानो पासवर्ड</label><input type="password" id="op" placeholder="••••••••"></div>
+        <div class="fg"><label>नयाँ पासवर्ड</label><input type="password" id="np" placeholder="••••••••"></div>
+        <div class="fg"><label>पुष्टि गर्नुहोस्</label><input type="password" id="cp" placeholder="••••••••"></div>
+        <button class="save-btn full" onclick="chPass()"><i class="fas fa-key"></i> पासवर्ड परिवर्तन गर्नुहोस्</button>
+        <div class="success-msg" id="psc"><i class="fas fa-check-circle"></i> पासवर्ड परिवर्तन भयो!</div>
+      </div>
+      <div class="form-card" style="border:1.5px solid #ffcdd2">
+        <h3 style="font-size:15px;color:var(--red);margin-bottom:8px"><i class="fas fa-exclamation-triangle"></i> Danger Zone</h3>
+        <p style="font-size:13px;color:#777;margin-bottom:16px">यो action पूर्ववत हुन सक्दैन!</p>
+        <button class="save-btn full" style="background:linear-gradient(135deg,#b71c1c,#e53935)" onclick="clrAll()"><i class="fas fa-trash"></i> सबै डेटा रिसेट गर्नुहोस्</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="tmsg"></span></div>
+<script>
+var DS=[{id:1,name:'रामदेनी प्रसाद',position:'प्रबन्धक',phone:'9796250893',email:'',photo:''},{id:2,name:'अनिता कुमारी',position:'सहायक प्रबन्धक',phone:'9580920805',email:'amitasahani609@gmail.com',photo:''},{id:3,name:'रञ्जित बेठा',position:'लेखाक',phone:'9748335292',email:'ranjitraajak9898@gmail.com',photo:''},{id:4,name:'रञ्जु कुमारी साहँ',position:'स्थानीय प्रतिनिधि',phone:'9580989858',email:'ranjusamridhi@gmail.com',photo:''}];
+var DN=[{id:1,title:'वार्षिक साधारण सभाको सूचना',body:'मिति २०८१ असार ३० गते बिहान १० बजे वार्षिक साधारण सभा हुने।',type:'urgent',date:'२०८१ असार १५'},{id:2,title:'कृषि कर्जामा विशेष छुट',body:'असार महिनामा कृषि कर्जामा विशेष छुट।',type:'normal',date:'२०८१ जेठ २०'}];
+var DG=[{id:1,url:'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=600',caption:'कृषि कार्यक्रम'},{id:2,url:'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=600',caption:'किसान प्रशिक्षण'},{id:3,url:'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600',caption:'खेत भ्रमण'},{id:4,url:'https://images.unsplash.com/photo-1586771107445-d3ca888129ff?w=600',caption:'सदस्य भेला'},{id:5,url:'https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600',caption:'कृषि मेला'},{id:6,url:'https://images.unsplash.com/photo-1560493676-04071c5f467b?w=600',caption:'बाली निरीक्षण'}];
+function gl(k,d){try{var v=localStorage.getItem('sf_'+k);return v?JSON.parse(v):d;}catch(e){return d;}}
+function sl(k,v){try{localStorage.setItem('sf_'+k,JSON.stringify(v));}catch(e){}}
+function toast(msg,err){var t=document.getElementById('toast');document.getElementById('tmsg').textContent=msg;t.className='toast'+(err?' err':'');t.classList.add('show');setTimeout(function(){t.classList.remove('show');},3000);}
+function showS(id){var e=document.getElementById(id);e.style.display='flex';setTimeout(function(){e.style.display='none';},2500);}
+function doLogin(){var p=document.getElementById('lp').value;var pw=gl('pw','sfacl2060');if(p===pw){document.getElementById('login-page').style.display='none';document.getElementById('admin-page').style.display='block';loadAll();}else{document.getElementById('lerr').style.display='block';document.getElementById('lp').style.borderColor='#e53935';setTimeout(function(){document.getElementById('lp').style.borderColor='#e0e0e0';},2000);}}
+function doLogout(){document.getElementById('login-page').style.display='flex';document.getElementById('admin-page').style.display='none';document.getElementById('lp').value='';}
+function swTab(n,b){document.querySelectorAll('.tab-section').forEach(function(s){s.classList.remove('active');});document.querySelectorAll('.tab-btn').forEach(function(t){t.classList.remove('active');});document.getElementById('tab-'+n).classList.add('active');b.classList.add('active');}
+function addStaff(){var n=document.getElementById('sn').value.trim(),p=document.getElementById('sp').value.trim();if(!n||!p){toast('नाम र पद अनिवार्य!',1);return;}var ST=gl('st',DS);ST.push({id:Date.now(),name:n,position:p,phone:document.getElementById('sph').value.trim(),email:document.getElementById('sem').value.trim(),photo:document.getElementById('spt').value.trim()});sl('st',ST);['sn','sp','sph','sem','spt'].forEach(function(i){document.getElementById(i).value='';});showS('ssc');renderStaff();toast('कर्मचारी थपियो!');}
+function delStaff(id){if(!confirm('मेटाउने?'))return;var ST=gl('st',DS);ST=ST.filter(function(s){return s.id!==id;});sl('st',ST);renderStaff();toast('मेटाइयो!');}
+function renderStaff(){var ST=gl('st',DS);document.getElementById('staff-count').textContent=ST.length;var el=document.getElementById('staff-list');if(!ST.length){el.innerHTML='<div class="empty-msg"><i class="fas fa-users"></i>कुनै कर्मचारी छैन</div>';return;}el.innerHTML=ST.map(function(s){return '<div class="list-item"><div class="list-item-info"><strong>'+s.name+'</strong><span>'+s.position+(s.phone?' • '+s.phone:'')+(s.email?' • '+s.email:'')+'</span></div><button class="del-btn" onclick="delStaff('+s.id+')"><i class="fas fa-trash"></i></button></div>';}).join('');}
+function addNotice(){var t=document.getElementById('nt').value.trim();if(!t){toast('शीर्षक अनिवार्य!',1);return;}var NO=gl('no',DN);NO.unshift({id:Date.now(),title:t,body:document.getElementById('nb').value.trim(),type:document.getElementById('ntp').value,date:new Date().toLocaleDateString('ne-NP',{year:'numeric',month:'long',day:'numeric'})});sl('no',NO);document.getElementById('nt').value='';document.getElementById('nb').value='';showS('nsc');renderNotice();toast('सूचना थपियो!');}
+function delNotice(id){if(!confirm('मेटाउने?'))return;var NO=gl('no',DN);NO=NO.filter(function(n){return n.id!==id;});sl('no',NO);renderNotice();toast('मेटाइयो!');}
+function renderNotice(){var NO=gl('no',DN);document.getElementById('notice-count').textContent=NO.length;var el=document.getElementById('notice-list');if(!NO.length){el.innerHTML='<div class="empty-msg"><i class="fas fa-bell"></i>कुनै सूचना छैन</div>';return;}el.innerHTML=NO.map(function(n){return '<div class="list-item"><div class="list-item-info"><strong>'+(n.type==='urgent'?'🔴 ':'')+n.title+'</strong><span>'+n.date+'</span></div><button class="del-btn" onclick="delNotice('+n.id+')"><i class="fas fa-trash"></i></button></div>';}).join('');}
+function addGallery(){var u=document.getElementById('gu').value.trim();if(!u){toast('URL अनिवार्य!',1);return;}var GA=gl('ga',DG);GA.push({id:Date.now(),url:u,caption:document.getElementById('gc').value.trim()||'SFACL'});sl('ga',GA);document.getElementById('gu').value='';document.getElementById('gc').value='';showS('gsc');renderGallery();toast('फोटो थपियो!');}
+function delGallery(id){if(!confirm('मेटाउने?'))return;var GA=gl('ga',DG);GA=GA.filter(function(g){return g.id!==id;});sl('ga',GA);renderGallery();toast('मेटाइयो!');}
+function renderGallery(){var GA=gl('ga',DG);document.getElementById('gallery-count').textContent=GA.length;var el=document.getElementById('gallery-list');if(!GA.length){el.innerHTML='<div class="empty-msg"><i class="fas fa-images"></i>कुनै फोटो छैन</div>';return;}el.innerHTML=GA.map(function(g){return '<div class="list-item"><div class="list-item-info"><strong>'+g.caption+'</strong><span style="font-size:10px">'+g.url.substring(0,50)+'...</span></div><button class="del-btn" onclick="delGallery('+g.id+')"><i class="fas fa-trash"></i></button></div>';}).join('');}
+function saveStats(){var s={m:parseInt(document.getElementById('stm').value)||500,y:parseInt(document.getElementById('sty').value)||25,l:parseInt(document.getElementById('stl').value)||50};sl('sta',s);document.getElementById('cur-m').textContent=s.m;document.getElementById('cur-y').textContent=s.y;document.getElementById('cur-l').textContent=s.l;showS('stsc');toast('तथ्याङ्क अपडेट भयो!');}
+function loadStats(){var s=gl('sta',{m:500,y:25,l:50});document.getElementById('stm').value=s.m;document.getElementById('sty').value=s.y;document.getElementById('stl').value=s.l;document.getElementById('cur-m').textContent=s.m;document.getElementById('cur-y').textContent=s.y;document.getElementById('cur-l').textContent=s.l;}
+function chPass(){var o=document.getElementById('op').value,n=document.getElementById('np').value,c=document.getElementById('cp').value;var pw=gl('pw','sfacl2060');if(o!==pw){toast('पुरानो पासवर्ड गलत!',1);return;}if(n!==c){toast('पासवर्ड मेल खाएन!',1);return;}if(n.length<6){toast('कम्तिमा ६ अक्षर!',1);return;}sl('pw',n);['op','np','cp'].forEach(function(i){document.getElementById(i).value='';});showS('psc');toast('पासवर्ड परिवर्तन भयो!');}
+function clrAll(){if(!confirm('⚠️ सबै डेटा मेटाउने? यो कार्य पूर्ववत हुन सक्दैन!'))return;['sf_st','sf_no','sf_ga','sf_sta'].forEach(function(k){localStorage.removeItem(k);});loadAll();toast('सबै डेटा रिसेट भयो!');}
+function loadAll(){renderStaff();renderNotice();renderGallery();loadStats();}
+document.addEventListener('DOMContentLoaded',function(){document.getElementById('lp').addEventListener('keydown',function(e){if(e.key==='Enter')doLogin();});});
+</script>
+</body>
+</html>
+
+
+<script>
+function saveRates(){
+  var rates={
+    agri:{rate:document.getElementById('r1').value||'११%',period:document.getElementById('p1').value||'१ वर्ष'},
+    live:{rate:document.getElementById('r2').value||'१२%',period:document.getElementById('p2').value||'२ वर्ष'},
+    home:{rate:document.getElementById('r3').value||'१३%',period:document.getElementById('p3').value||'५ वर्ष'},
+    biz:{rate:document.getElementById('r4').value||'१३.५%',period:document.getElementById('p4').value||'३ वर्ष'}
+  };
+  localStorage.setItem('sf_rates',JSON.stringify(rates));
+  showS('rsc');renderRates();toast('ब्याजदर अपडेट भयो!');
+}
+function loadRates(){
+  var def={agri:{rate:'११%',period:'१ वर्ष'},live:{rate:'१२%',period:'२ वर्ष'},home:{rate:'१३%',period:'५ वर्ष'},biz:{rate:'१३.५%',period:'३ वर्ष'}};
+  var r=gl('rates',def);
+  document.getElementById('r1').value=r.agri.rate;
+  document.getElementById('p1').value=r.agri.period;
+  document.getElementById('r2').value=r.live.rate;
+  document.getElementById('p2').value=r.live.period;
+  document.getElementById('r3').value=r.home.rate;
+  document.getElementById('p3').value=r.home.period;
+  document.getElementById('r4').value=r.biz.rate;
+  document.getElementById('p4').value=r.biz.period;
+  renderRates();
+}
+function renderRates(){
+  var def={agri:{rate:'११%',period:'१ वर्ष'},live:{rate:'१२%',period:'२ वर्ष'},home:{rate:'१३%',period:'५ वर्ष'},biz:{rate:'१३.५%',period:'३ वर्ष'}};
+  var r=gl('rates',def);
+  document.getElementById('cur-rates').innerHTML='<table style="width:100%;border-collapse:collapse"><tr style="background:#e8f5e9"><th style="padding:10px;text-align:left;font-size:13px">कर्जा</th><th style="padding:10px;font-size:13px">ब्याज</th><th style="padding:10px;font-size:13px">अवधि</th></tr><tr><td style="padding:10px;border-bottom:1px solid #f0f0f0;font-size:13px">कृषि कर्जा</td><td style="padding:10px;border-bottom:1px solid #f0f0f0;font-weight:700;color:var(--gd)">'+r.agri.rate+'</td><td style="padding:10px;border-bottom:1px solid #f0f0f0;font-size:13px">'+r.agri.period+'</td></tr><tr><td style="padding:10px;border-bottom:1px solid #f0f0f0;font-size:13px">पशुपालन</td><td style="padding:10px;border-bottom:1px solid #f0f0f0;font-weight:700;color:var(--gd)">'+r.live.rate+'</td><td style="padding:10px;border-bottom:1px solid #f0f0f0;font-size:13px">'+r.live.period+'</td></tr><tr><td style="padding:10px;border-bottom:1px solid #f0f0f0;font-size:13px">घर कर्जा</td><td style="padding:10px;border-bottom:1px solid #f0f0f0;font-weight:700;color:var(--gd)">'+r.home.rate+'</td><td style="padding:10px;border-bottom:1px solid #f0f0f0;font-size:13px">'+r.home.period+'</td></tr><tr><td style="padding:10px;font-size:13px">व्यवसाय</td><td style="padding:10px;font-weight:700;color:var(--gd)">'+r.biz.rate+'</td><td style="padding:10px;font-size:13px">'+r.biz.period+'</td></tr></table>';
+}
+var origLoadAll=loadAll;
+loadAll=function(){origLoadAll();loadRates();}
+</script>
+<script>
+// Add new tabs to admin
+document.addEventListener('DOMContentLoaded',function(){
+  var tabs=document.querySelector('.admin-tabs');
+  if(tabs){
+    var newTabs='<button class="tab-btn" onclick="swTab(''about'',this)"><i class="fas fa-info-circle"></i> About</button><button class="tab-btn" onclick="swTab(''contact'',this)"><i class="fas fa-phone"></i> Contact</button><button class="tab-btn" onclick="swTab(''hero'',this)"><i class="fas fa-home"></i> Hero</button>';
+    tabs.innerHTML+=newTabs;
+  }
+  var content=document.querySelector('.admin-content');
+  if(content){
+    content.innerHTML+=
+    <div class="tab-section" id="tab-about">
+      <div class="section-title"><i class="fas fa-info-circle"></i> About Section Edit</div>
+      <div class="form-card">
+        <div class="fg"><label>संस्थाको परिचय (Nepali)</label><textarea id="ab-ne" rows="4" placeholder="संस्थाको परिचय..."></textarea></div>
+        <div class="fg"><label>Introduction (English)</label><textarea id="ab-en" rows="4" placeholder="Introduction..."></textarea></div>
+        <div class="fg"><label>Vision (Nepali)</label><input type="text" id="vis-ne" placeholder="दृष्टि..."></div>
+        <div class="fg"><label>Mission (Nepali)</label><input type="text" id="mis-ne" placeholder="लक्ष्य..."></div>
+        <button class="save-btn full" onclick="saveAbout()"><i class="fas fa-save"></i> सेभ गर्नुहोस्</button>
+        <div class="success-msg" id="absc"><i class="fas fa-check-circle"></i> अपडेट भयो!</div>
+      </div>
+    </div>
+    <div class="tab-section" id="tab-contact">
+      <div class="section-title"><i class="fas fa-phone"></i> Contact Details Edit</div>
+      <div class="form-card">
+        <div class="form-grid">
+          <div class="fg"><label>प्रबन्धक नाम</label><input type="text" id="c-m-name" placeholder="रामदेनी प्रसाद"></div>
+          <div class="fg"><label>प्रबन्धक फोन</label><input type="tel" id="c-m-phone" placeholder="9796250893"></div>
+          <div class="fg"><label>सहायक प्रबन्धक नाम</label><input type="text" id="c-am-name" placeholder="अनिता कुमारी"></div>
+          <div class="fg"><label>सहायक प्रबन्धक फोन</label><input type="tel" id="c-am-phone" placeholder="9580920805"></div>
+          <div class="fg"><label>सहायक प्रबन्धक Email</label><input type="email" id="c-am-email" placeholder="email@gmail.com"></div>
+          <div class="fg"><label>लेखाक नाम</label><input type="text" id="c-ac-name" placeholder="रञ्जित बेठा"></div>
+          <div class="fg"><label>लेखाक फोन</label><input type="tel" id="c-ac-phone" placeholder="9748335292"></div>
+          <div class="fg"><label>लेखाक Email</label><input type="email" id="c-ac-email" placeholder="email@gmail.com"></div>
+          <div class="fg"><label>कार्यालय समय (Nepali)</label><input type="text" id="c-time-ne" placeholder="आइत–शुक्र: ९:०० – ५:०० बजे"></div>
+          <div class="fg"><label>ठेगाना (Nepali)</label><input type="text" id="c-addr-ne" placeholder="यमुनामाई गाउँपालिका-१..."></div>
+        </div>
+        <button class="save-btn full" onclick="saveContact()"><i class="fas fa-save"></i> सेभ गर्नुहोस्</button>
+        <div class="success-msg" id="consc"><i class="fas fa-check-circle"></i> अपडेट भयो!</div>
+      </div>
+    </div>
+    <div class="tab-section" id="tab-hero">
+      <div class="section-title"><i class="fas fa-home"></i> Hero Section Edit</div>
+      <div class="form-card">
+        <div class="fg"><label>Tagline (Nepali)</label><input type="text" id="h-tag-ne" placeholder="किसानको भरोसा • समृद्धिको आधार..."></div>
+        <div class="fg"><label>Tagline (English)</label><input type="text" id="h-tag-en" placeholder="Farmer's Trust..."></div>
+        <div class="fg"><label>Badge Text (Nepali)</label><input type="text" id="h-badge-ne" placeholder="स्थापना २०६०..."></div>
+        <button class="save-btn full" onclick="saveHero()"><i class="fas fa-save"></i> सेभ गर्नुहोस्</button>
+        <div class="success-msg" id="herosc"><i class="fas fa-check-circle"></i> अपडेट भयो!</div>
+      </div>
+    </div>;
+  }
+
+  // Load saved data
+  loadAbout();loadContactInfo();loadHeroInfo();
+});
+
+function saveAbout(){
+  var d={ne:document.getElementById('ab-ne').value,en:document.getElementById('ab-en').value,vis:document.getElementById('vis-ne').value,mis:document.getElementById('mis-ne').value};
+  localStorage.setItem('sf_about',JSON.stringify(d));
+  showS('absc');toast('About अपडेट भयो!');
+}
+function loadAbout(){
+  var d=JSON.parse(localStorage.getItem('sf_about')||'{}');
+  if(d.ne&&document.getElementById('ab-ne'))document.getElementById('ab-ne').value=d.ne;
+  if(d.en&&document.getElementById('ab-en'))document.getElementById('ab-en').value=d.en;
+  if(d.vis&&document.getElementById('vis-ne'))document.getElementById('vis-ne').value=d.vis;
+  if(d.mis&&document.getElementById('mis-ne'))document.getElementById('mis-ne').value=d.mis;
+}
+function saveContact(){
+  var d={mName:document.getElementById('c-m-name').value,mPhone:document.getElementById('c-m-phone').value,amName:document.getElementById('c-am-name').value,amPhone:document.getElementById('c-am-phone').value,amEmail:document.getElementById('c-am-email').value,acName:document.getElementById('c-ac-name').value,acPhone:document.getElementById('c-ac-phone').value,acEmail:document.getElementById('c-ac-email').value,time:document.getElementById('c-time-ne').value,addr:document.getElementById('c-addr-ne').value};
+  localStorage.setItem('sf_contact',JSON.stringify(d));
+  showS('consc');toast('Contact अपडेट भयो!');
+}
+function loadContactInfo(){
+  var def={mName:'रामदेनी प्रसाद',mPhone:'9796250893',amName:'अनिता कुमारी',amPhone:'9580920805',amEmail:'amitasahani609@gmail.com',acName:'रञ्जित बेठा',acPhone:'9748335292',acEmail:'ranjitraajak9898@gmail.com',time:'आइत–शुक्र: ९:०० – ५:०० बजे',addr:'यमुनामाई गाउँपालिका-१, जेठरहिया, रौतहट'};
+  var d=JSON.parse(localStorage.getItem('sf_contact')||JSON.stringify(def));
+  if(document.getElementById('c-m-name')){
+    document.getElementById('c-m-name').value=d.mName||'';
+    document.getElementById('c-m-phone').value=d.mPhone||'';
+    document.getElementById('c-am-name').value=d.amName||'';
+    document.getElementById('c-am-phone').value=d.amPhone||'';
+    document.getElementById('c-am-email').value=d.amEmail||'';
+    document.getElementById('c-ac-name').value=d.acName||'';
+    document.getElementById('c-ac-phone').value=d.acPhone||'';
+    document.getElementById('c-ac-email').value=d.acEmail||'';
+    document.getElementById('c-time-ne').value=d.time||'';
+    document.getElementById('c-addr-ne').value=d.addr||'';
+  }
+}
+function saveHero(){
+  var d={tagNe:document.getElementById('h-tag-ne').value,tagEn:document.getElementById('h-tag-en').value,badgeNe:document.getElementById('h-badge-ne').value};
+  localStorage.setItem('sf_hero',JSON.stringify(d));
+  showS('herosc');toast('Hero अपडेट भयो!');
+}
+function loadHeroInfo(){
+  var d=JSON.parse(localStorage.getItem('sf_hero')||'{}');
+  if(document.getElementById('h-tag-ne')){
+    document.getElementById('h-tag-ne').value=d.tagNe||'किसानको भरोसा • समृद्धिको आधार • एकताको शक्ति';
+    document.getElementById('h-tag-en').value=d.tagEn||"Farmer's Trust • Foundation of Prosperity";
+    document.getElementById('h-badge-ne').value=d.badgeNe||'स्थापना २०६० • जेठरहिया, रौतहट, मधेश प्रदेश';
+  }
+}
+</script>

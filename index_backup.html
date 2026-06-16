@@ -1,0 +1,888 @@
+﻿<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SFACL Jetharahiya | साना किसान कृषि सहकारी संस्था लि.</title>
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Nepali&family=Poppins:wght@400;500;600;700;800;900&family=Yatra+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{--gd:#1a5c1a;--gm:#2e7d32;--gl:#4caf50;--gold:#f9a825;--gold2:#fdd835;--cream:#fafaf5;--td:#1a1a1a;--tm:#444;--tl:#777;--sh:0 8px 32px rgba(0,0,0,0.12);--r:16px;--tr:all 0.35s cubic-bezier(0.4,0,0.2,1)}
+,::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;background:var(--cream);color:var(--td);overflow-x:hidden;line-height:1.7}
+.lang-en .ne{display:none!important}
+.lang-ne .en{display:none!important}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--gd),var(--gold));border-radius:3px}
+
+/* NAVBAR */
+#nb{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,0.88);backdrop-filter:blur(32px) saturate(220%) brightness(1.05);-webkit-backdrop-filter:blur(32px) saturate(220%);border-bottom:none;box-shadow:0 1px 0 rgba(0,0,0,0.06),0 8px 32px rgba(0,0,0,0.04);transition:all 0.5s cubic-bezier(0.4,0,0.2,1)}
+.ni{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:8px 24px;gap:16px}
+.nl{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
+.nli{width:52px;height:52px;border-radius:50%;border:2.5px solid var(--gold);overflow:hidden;flex-shrink:0;box-shadow:0 4px 16px rgba(26,92,26,0.3)}
+.nli img{width:100%;height:100%;object-fit:cover}
+.nlt .t1{font-size:15px;font-weight:800;color:var(--gd);line-height:1.2}
+.nlt .t2{font-size:10px;color:var(--tl);font-family:'Tiro Devanagari Nepali',serif}
+.nls{display:flex;align-items:center;gap:2px;list-style:none}
+.nls a{position:relative;text-decoration:none;color:var(--td);font-size:12.5px;font-weight:600;padding:8px 14px;border-radius:8px;transition:all 0.3s ease;font-family:"Tiro Devanagari Nepali",serif;position:relative;overflow:hidden;letter-spacing:0.3px}.nls a::before{content:"";position:absolute;bottom:0;left:50%;width:0;height:2.5px;background:linear-gradient(90deg,var(--gd),var(--gold));transition:all 0.3s ease;transform:translateX(-50%);border-radius:2px}.nls a:hover{color:var(--gd);background:linear-gradient(135deg,rgba(26,92,26,0.08),rgba(249,168,37,0.05));transform:translateY(-2px);letter-spacing:0.5px}.nls a::after{content:"";position:absolute;bottom:4px;left:50%;width:0;height:2px;background:linear-gradient(90deg,var(--gd),var(--gold));transition:all 0.3s ease;transform:translateX(-50%);border-radius:2px}.nls a:hover::after{width:70%}.nls a:hover::before{width:80%}
+.nls a::before{content:'';position:absolute;bottom:0;left:50%;width:0;height:2.5px;background:linear-gradient(90deg,var(--gd),var(--gold));transition:var(--tr);transform:translateX(-50%)}
+.nls a:hover{color:var(--gd);background:rgba(26,92,26,0.06)}
+.nls a:hover::before{width:80%}
+.nls a.active{color:var(--gd);background:rgba(26,92,26,0.08)}
+.nls a.active::before{width:80%}
+.nr{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.lbtn{background:linear-gradient(135deg,var(--gd),var(--gm));color:white;border:none;border-radius:20px;padding:7px 16px;font-size:12px;font-weight:700;cursor:pointer;transition:var(--tr)}
+.lbtn:hover{background:linear-gradient(135deg,var(--gold),#e65100);color:var(--gd);transform:translateY(-1px)}
+.abtn{background:transparent;border:2px solid var(--gd);color:var(--gd);border-radius:8px;padding:7px 14px;font-size:12px;cursor:pointer;transition:var(--tr);font-weight:700;display:flex;align-items:center;gap:5px}
+.abtn:hover{background:var(--gd);color:white;transform:translateY(-1px)}
+.hbg{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hbg span{display:block;width:24px;height:2px;background:var(--gd);border-radius:2px;transition:var(--tr)}
+.hbg.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hbg.open span:nth-child(2){opacity:0}
+.hbg.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mnav{display:none;position:fixed;top:73px;left:0;right:0;background:white;z-index:999;border-bottom:3px solid var(--gold);box-shadow:0 10px 40px rgba(0,0,0,0.1);padding:16px;max-height:calc(100vh - 73px);overflow-y:auto;animation:slideDown 0.3s ease}
+@keyframes slideDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+.mnav.open{display:block}
+.mnav a{display:block;padding:13px 16px;text-decoration:none;color:var(--td);font-family:'Tiro Devanagari Nepali',serif;font-size:15px;border-radius:8px;transition:var(--tr);border-bottom:1px solid #f0f0f0}
+.mnav a:hover{background:var(--gd);color:white;padding-left:24px}
+.mnav-btns{display:flex;gap:8px;margin-top:12px}
+
+/* HERO */
+#hero{min-height:100vh;background:linear-gradient(160deg,#020a02 0%,#051405 20%,#0d2e0d 45%,#1a5c1a 70%,#2e7d32 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:73px}
+.hbp{position:absolute;inset:0;opacity:0.03;background-image:repeating-linear-gradient(45deg,white 0,white 1px,transparent 0,transparent 50%);background-size:28px 28px}
+.hpart{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.part{position:absolute;border-radius:50%;animation:floatup linear infinite}
+@keyframes floatup{0%{transform:translateY(110vh) rotate(0deg);opacity:0}10%{opacity:0.6}90%{opacity:0.3}100%{transform:translateY(-120px) rotate(720deg);opacity:0}}
+
+/* LOAN ANIMATION BELT */
+.loan-belt{position:absolute;bottom:0;left:0;right:0;height:60px;background:rgba(0,0,0,0.2);overflow:hidden;display:flex;align-items:center}
+.loan-belt-inner{display:flex;gap:48px;animation:beltScroll 20s linear infinite;white-space:nowrap;padding:0 24px}
+@keyframes beltScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.belt-item{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.7);font-size:12px;font-family:'Tiro Devanagari Nepali',serif;flex-shrink:0}
+.belt-item i{color:var(--gold);font-size:14px}
+
+.hc{position:relative;z-index:2;text-align:center;padding:48px 20px;max-width:960px}
+.hbadge{display:inline-flex;align-items:center;gap:8px;background:rgba(249,168,37,0.12);border:1px solid rgba(249,168,37,0.35);color:var(--gold2);border-radius:30px;padding:7px 20px;font-size:11.5px;font-weight:600;margin-bottom:28px;letter-spacing:1.5px;animation:fid 0.8s ease both}
+.hring{width:130px;height:130px;margin:0 auto 28px;border-radius:50%;border:3px solid var(--gold);overflow:hidden;animation:pulse 3s ease-in-out infinite,fid 0.8s ease both;box-shadow:0 0 60px rgba(249,168,37,0.3)}
+.hring img{width:100%;height:100%;object-fit:cover}
+.ht{font-size:clamp(32px,7vw,68px);font-weight:900;color:white;letter-spacing:-2px;line-height:1.05;margin-bottom:12px;animation:fiu 0.8s ease 0.2s both;font-family:'Yatra One',cursive}
+.ht .g{color:var(--gold)}
+.hs{font-size:clamp(16px,3vw,24px);font-family:'Tiro Devanagari Nepali',serif;color:rgba(255,255,255,0.85);margin-bottom:10px;animation:fiu 0.8s ease 0.3s both}
+.htag{font-size:clamp(12px,2vw,14px);color:rgba(255,255,255,0.55);margin-bottom:40px;animation:fiu 0.8s ease 0.4s both}
+.hbtns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;animation:fiu 0.8s ease 0.5s both}
+.bp{background:linear-gradient(135deg,var(--gold),#e65100);color:var(--gd);border:none;border-radius:32px;padding:15px 36px;font-size:15px;font-weight:800;cursor:pointer;transition:var(--tr);font-family:'Tiro Devanagari Nepali',serif;box-shadow:0 8px 28px rgba(249,168,37,0.4);text-decoration:none;display:inline-flex;align-items:center;gap:9px}
+.bp:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(249,168,37,0.5)}
+.bo{background:transparent;color:white;border:2px solid rgba(255,255,255,0.4);border-radius:32px;padding:15px 36px;font-size:15px;font-weight:600;cursor:pointer;transition:var(--tr);font-family:'Tiro Devanagari Nepali',serif;text-decoration:none;display:inline-flex;align-items:center;gap:9px}
+.bo:hover{border-color:white;background:rgba(255,255,255,0.1);transform:translateY(-4px)}
+.hscr{position:absolute;bottom:70px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.4);text-align:center;animation:bounce 2s infinite;font-size:11px}
+.hscr i{display:block;font-size:18px;margin-bottom:3px}
+
+/* STATS */
+#stats{background:linear-gradient(135deg,var(--gd),var(--gm));padding:40px 20px}
+.sg{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.si{text-align:center;padding:24px 16px;border-right:1px solid rgba(255,255,255,0.12)}
+.si:last-child{border-right:none}
+.sn{font-size:clamp(32px,5vw,48px);font-weight:900;color:var(--gold);font-family:'Poppins',sans-serif;line-height:1}
+.sl{font-size:13px;color:rgba(255,255,255,0.8);font-family:'Tiro Devanagari Nepali',serif;margin-top:6px}
+
+/* SECTIONS */
+.sec{padding:88px 20px}
+.seca{background:white}
+.sh{text-align:center;margin-bottom:60px}
+.sey{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:2.5px;color:var(--gm);text-transform:uppercase;margin-bottom:14px}
+.sey::before,.sey::after{content:'';display:block;width:32px;height:1.5px;background:var(--gold)}
+.st{font-size:clamp(26px,4vw,44px);font-weight:800;color:var(--gd);font-family:'Yatra One',cursive;line-height:1.2}
+.ste{font-size:clamp(22px,3.5vw,38px);font-weight:800;color:var(--gd);font-family:'Poppins',sans-serif}
+.sd{font-size:15px;color:var(--tm);max-width:620px;margin:14px auto 0;font-family:'Tiro Devanagari Nepali',serif;line-height:1.8}
+.con{max-width:1280px;margin:0 auto}
+
+/* ABOUT */
+.ag{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.avis{position:relative}
+.aiph{width:100%;aspect-ratio:4/3;background:linear-gradient(135deg,#d4edda,#b8dfc0);border-radius:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;border:3px dashed var(--gl);text-align:center;padding:24px}
+.aiph i{font-size:52px;color:var(--gm)}
+.abadge{position:absolute;bottom:-24px;right:-24px;background:linear-gradient(135deg,var(--gd),#0d2e0d);color:white;border-radius:18px;padding:18px 22px;text-align:center;box-shadow:var(--sh);border:3px solid var(--gold)}
+.abadge .num{font-size:30px;font-weight:900;color:var(--gold);font-family:'Poppins',sans-serif;line-height:1}
+.abadge .lbl{font-size:11px;color:rgba(255,255,255,0.75);font-family:'Tiro Devanagari Nepali',serif}
+.ac h3{font-size:30px;color:var(--gd);font-family:'Yatra One',cursive;margin-bottom:18px}
+.ac p{font-family:'Tiro Devanagari Nepali',serif;color:var(--tm);font-size:15px;margin-bottom:22px;line-height:1.9}
+.vm{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+.vmc{background:linear-gradient(135deg,#e8f5e9,#f0faf0);border-radius:14px;padding:22px;border-left:4px solid var(--gm);transition:var(--tr)}
+.vmc:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(46,125,50,0.12)}
+.vmc h4{font-size:13px;font-weight:700;color:var(--gd);margin-bottom:8px;display:flex;align-items:center;gap:7px}
+.vmc p{font-size:13px;color:var(--tm);font-family:'Tiro Devanagari Nepali',serif;line-height:1.7;margin-bottom:0}
+
+/* SERVICES */
+.svg{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.svc{background:white;border-radius:20px;padding:36px 28px;text-align:center;box-shadow:0 4px 24px rgba(0,0,0,0.06);transition:var(--tr);border:1.5px solid transparent;position:relative;overflow:hidden}
+.svc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gd),var(--gold));transform:scaleX(0);transition:var(--tr);transform-origin:left}
+.svc:hover{transform:translateY(-10px);box-shadow:0 20px 60px rgba(0,0,0,0.12);border-color:#e8f5e9}
+.svc:hover::after{transform:scaleX(1)}
+.svi{width:76px;height:76px;margin:0 auto 22px;background:linear-gradient(135deg,#e8f5e9,#c8e6c9);border-radius:22px;display:flex;align-items:center;justify-content:center;font-size:32px;transition:var(--tr)}
+.svc:hover .svi{background:linear-gradient(135deg,var(--gd),var(--gm));transform:rotate(-5deg) scale(1.1)}
+.svc:hover .svi i{color:white!important}
+.svi i{color:var(--gm);transition:var(--tr)}
+.svc h3{font-size:18px;font-weight:700;color:var(--gd);font-family:'Yatra One',cursive;margin-bottom:10px}
+.svc p{font-size:13px;color:var(--tm);font-family:'Tiro Devanagari Nepali',serif;line-height:1.8}
+
+/* LOAN */
+.lg{display:grid;grid-template-columns:1.1fr 0.9fr;gap:48px;align-items:start}
+.lts{display:flex;flex-direction:column;gap:16px}
+.lc{background:white;border-radius:18px;padding:22px 26px;display:flex;align-items:flex-start;gap:18px;box-shadow:0 4px 18px rgba(0,0,0,0.06);transition:var(--tr);border:1.5px solid transparent}
+.lc:hover{border-color:var(--gl);transform:translateX(8px);box-shadow:0 8px 32px rgba(46,125,50,0.1)}
+.li{width:52px;height:52px;flex-shrink:0;background:linear-gradient(135deg,var(--gd),var(--gm));border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;color:white}
+.lc h4{font-size:15px;font-weight:700;color:var(--gd);font-family:'Yatra One',cursive;margin-bottom:5px}
+.lc p{font-size:12.5px;color:var(--tm);font-family:'Tiro Devanagari Nepali',serif}
+.lrb{background:linear-gradient(160deg,#051405,var(--gd));border-radius:22px;padding:36px;color:white;position:sticky;top:100px}
+.lrb h3{font-size:20px;font-family:'Yatra One',cursive;color:var(--gold);margin-bottom:22px;text-align:center}
+.rt{width:100%;border-collapse:collapse}
+.rt th{background:rgba(255,255,255,0.08);padding:11px 14px;font-size:11.5px;font-weight:700;text-align:left}
+.rt td{padding:11px 14px;font-size:13px;border-bottom:1px solid rgba(255,255,255,0.06);font-family:'Tiro Devanagari Nepali',serif}
+.rt tr:hover td{background:rgba(255,255,255,0.04)}
+.rh{color:var(--gold2);font-weight:800}
+.ps{margin-top:26px}
+.ps h4{font-size:13px;color:var(--gold);font-weight:700;margin-bottom:14px}
+.step{display:flex;gap:12px;margin-bottom:13px;align-items:flex-start}
+.stn{width:28px;height:28px;flex-shrink:0;background:linear-gradient(135deg,var(--gold),#f57f17);color:var(--gd);border-radius:50%;font-size:11px;font-weight:900;display:flex;align-items:center;justify-content:center}
+.step p{font-size:13px;color:rgba(255,255,255,0.82);font-family:'Tiro Devanagari Nepali',serif}
+
+/* MEMBERSHIP */
+.mg{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-bottom:52px}
+.mbc{background:white;border-radius:18px;padding:28px;box-shadow:0 4px 18px rgba(0,0,0,0.06);display:flex;gap:18px;align-items:flex-start;transition:var(--tr);border:1.5px solid transparent}
+.mbc:hover{border-color:var(--gold);transform:translateY(-5px)}
+.mbi{width:48px;height:48px;flex-shrink:0;background:linear-gradient(135deg,#fff8e1,#fff3cd);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--gold)}
+.mbc h4{font-size:15px;font-weight:700;color:var(--gd);font-family:'Yatra One',cursive;margin-bottom:6px}
+.mbc p{font-size:13px;color:var(--tm);font-family:'Tiro Devanagari Nepali',serif;line-height:1.7}
+.mfb{background:white;border-radius:22px;padding:44px;box-shadow:var(--sh);max-width:640px;margin:0 auto;border:1.5px solid #e8f5e9}
+.mfb h3{font-size:24px;font-family:'Yatra One',cursive;color:var(--gd);margin-bottom:28px;text-align:center}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fg{margin-bottom:16px}
+.fg label{display:block;font-size:11.5px;font-weight:700;color:var(--gd);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px}
+.fg input,.fg select,.fg textarea{width:100%;border:1.5px solid #e8e8e8;border-radius:10px;padding:11px 15px;font-size:14px;font-family:'Poppins',sans-serif;transition:var(--tr);outline:none;background:#fafafa}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gm);box-shadow:0 0 0 3px rgba(46,125,50,0.1);background:white}
+
+/* TEAM */
+.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:26px}
+.tc{background:white;border-radius:20px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,0.08);transition:var(--tr);text-align:center}
+.tc:hover{transform:translateY(-10px);box-shadow:0 20px 60px rgba(0,0,0,0.15)}
+.tph{width:100%;aspect-ratio:1;background:linear-gradient(135deg,#e8f5e9,#c8e6c9);display:flex;align-items:center;justify-content:center;font-size:60px;color:var(--gm);position:relative;overflow:hidden}
+.tph img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.tin{padding:22px 18px}
+.tn{font-size:16px;font-weight:700;color:var(--gd);font-family:'Tiro Devanagari Nepali',serif;margin-bottom:6px}
+.tpos{display:inline-block;background:linear-gradient(135deg,var(--gd),var(--gm));color:white;font-size:11px;padding:4px 12px;border-radius:20px;font-family:'Tiro Devanagari Nepali',serif;margin-bottom:14px}
+.tcts{display:flex;flex-direction:column;gap:7px}
+.tcl{display:flex;align-items:center;justify-content:center;gap:7px;font-size:12px;color:var(--tm);text-decoration:none;transition:var(--tr)}
+.tcl:hover{color:var(--gd)}
+.tcl i{color:var(--gm);width:14px;text-align:center}
+
+/* GALLERY */
+.gg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.gi{border-radius:14px;overflow:hidden;aspect-ratio:4/3;cursor:pointer;transition:var(--tr);position:relative;background:linear-gradient(135deg,#e8f5e9,#c8e6c9)}
+.gi:first-child{grid-column:span 2;aspect-ratio:16/9}
+.gi:hover{transform:scale(1.02);box-shadow:var(--sh)}
+.gi img{width:100%;height:100%;object-fit:cover;transition:var(--tr)}
+.gi:hover img{transform:scale(1.06)}
+.gov{position:absolute;inset:0;background:rgba(26,92,26,0.65);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:var(--tr);color:white;gap:6px}
+.gi:hover .gov{opacity:1}
+.gov i{font-size:28px}
+.lb{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.94);align-items:center;justify-content:center}
+.lb.on{display:flex}
+.lb img{max-width:92vw;max-height:88vh;border-radius:10px}
+.lbc{position:absolute;top:20px;right:24px;color:white;font-size:36px;cursor:pointer;transition:var(--tr)}
+.lbc:hover{transform:rotate(90deg)}
+
+/* NOTICE */
+.ng{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.nc{background:white;border-radius:18px;padding:26px;box-shadow:0 4px 18px rgba(0,0,0,0.06);border-left:4px solid var(--gm);transition:var(--tr);position:relative}
+.nc:hover{transform:translateY(-5px);box-shadow:var(--sh)}
+.nc.urg{border-left-color:#e53935}
+.nbdg{position:absolute;top:18px;right:18px;font-size:10px;padding:3px 9px;border-radius:20px;font-weight:700}
+.nbdg.nw{background:#e8f5e9;color:var(--gd)}
+.nbdg.ub{background:#ffebee;color:#e53935}
+.ndt{font-size:11px;color:var(--tl);margin-bottom:9px}
+.ntl{font-size:15px;font-weight:700;color:var(--gd);font-family:'Tiro Devanagari Nepali',serif;margin-bottom:9px;line-height:1.4}
+.nbd{font-size:13px;color:var(--tm);font-family:'Tiro Devanagari Nepali',serif;line-height:1.7}
+
+/* CONTACT */
+.cg{display:grid;grid-template-columns:1fr 1.3fr;gap:56px}
+.ci{display:flex;flex-direction:column;gap:16px}
+.cit{display:flex;gap:18px;align-items:flex-start;padding:18px;background:white;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,0.06);transition:var(--tr)}
+.cit:hover{transform:translateX(6px)}
+.cic{width:50px;height:50px;flex-shrink:0;background:linear-gradient(135deg,var(--gd),var(--gm));border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:19px;color:white}
+.cit h4{font-size:13px;font-weight:700;color:var(--gd);margin-bottom:4px}
+.cit p,.cit a{font-size:14px;color:var(--tm);font-family:'Tiro Devanagari Nepali',serif;text-decoration:none;display:block;transition:var(--tr)}
+.cit a:hover{color:var(--gd)}
+.mb{border-radius:18px;overflow:hidden;box-shadow:var(--sh);aspect-ratio:16/9;margin-bottom:22px}
+.mb iframe{width:100%;height:100%;border:none}
+.cfb{background:white;border-radius:18px;padding:32px;box-shadow:var(--sh)}
+.cfb h3{font-size:20px;font-family:'Yatra One',cursive;color:var(--gd);margin-bottom:22px}
+
+/* FOOTER */
+footer{background:linear-gradient(160deg,#020a02,#0a1f0a,#1a3a1a);color:rgba(255,255,255,0.75);padding:72px 20px 0}
+.fg2{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:44px;padding-bottom:52px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.fli{width:54px;height:54px;border-radius:50%;border:2.5px solid var(--gold);overflow:hidden}
+.fli img{width:100%;height:100%;object-fit:cover}
+.flw{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.fbn{font-size:18px;font-weight:800;color:white}
+.fbs{font-size:10.5px;color:rgba(255,255,255,0.45);font-family:'Tiro Devanagari Nepali',serif}
+.fb p{font-size:13px;color:rgba(255,255,255,0.55);font-family:'Tiro Devanagari Nepali',serif;line-height:1.9;margin-bottom:22px}
+.fsc{display:flex;gap:10px}
+.fsl{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.55);font-size:16px;text-decoration:none;transition:var(--tr)}
+.fsl:hover{background:var(--gold);color:var(--gd);transform:translateY(-3px)}
+.fc h4{font-size:12px;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:18px}
+.fc ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.fc ul li a{font-size:13px;color:rgba(255,255,255,0.55);text-decoration:none;font-family:'Tiro Devanagari Nepali',serif;transition:var(--tr);display:flex;align-items:center;gap:7px}
+.fc ul li a:hover{color:var(--gold);padding-left:4px}
+.fc ul li a i{font-size:11px;color:var(--gold);width:14px}
+.fbot{max-width:1280px;margin:0 auto;padding:22px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.fbot p{font-size:12px;color:rgba(255,255,255,0.35)}
+.dev{font-size:12px;color:rgba(255,255,255,0.45);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.dev a{color:var(--gold);text-decoration:none;font-weight:700;transition:var(--tr)}
+.dev a:hover{color:var(--gold2)}
+.devb{background:linear-gradient(135deg,var(--gold),#e65100);color:var(--gd);font-size:9.5px;font-weight:900;padding:3px 9px;border-radius:20px}
+
+/* ADMIN */
+#ao{display:none;position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,0.55);backdrop-filter:blur(5px)}
+#ap{position:fixed;top:0;right:-100%;bottom:0;width:min(500px,100vw);z-index:9001;background:white;transition:right 0.4s cubic-bezier(0.4,0,0.2,1);overflow-y:auto;box-shadow:-10px 0 50px rgba(0,0,0,0.2)}
+#ap.open{right:0!important;display:block!important}
+.aph{background:linear-gradient(135deg,var(--gd),var(--gm));padding:22px 26px;color:white;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+.aph h2{font-size:18px;font-weight:800}
+.aph p{font-size:11.5px;opacity:0.65}
+.apc{background:rgba(255,255,255,0.14);border:none;color:white;width:38px;height:38px;border-radius:9px;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;transition:var(--tr)}
+.apc:hover{background:rgba(255,255,255,0.25)}
+.alog{padding:44px 26px}
+.alog h3{font-size:22px;font-weight:800;color:var(--gd);margin-bottom:6px}
+.alog p{font-size:13px;color:var(--tl);margin-bottom:26px}
+.ai{width:100%;border:1.5px solid #e0e0e0;border-radius:10px;padding:13px 16px;font-size:14px;font-family:'Poppins',sans-serif;outline:none;transition:var(--tr);margin-bottom:12px}
+.ai:focus{border-color:var(--gm);box-shadow:0 0 0 3px rgba(46,125,50,0.1)}
+.asb{width:100%;background:linear-gradient(135deg,var(--gd),var(--gm));color:white;border:none;border-radius:10px;padding:14px;font-size:14px;font-weight:700;cursor:pointer;transition:var(--tr)}
+.asb:hover{opacity:0.9;transform:translateY(-1px)}
+.aerr{color:#e53935;font-size:12px;margin-top:7px;display:none}
+.acont{display:none;padding:0}
+.acont.vis{display:block}
+.ats{display:flex;border-bottom:2px solid #f0f0f0;position:sticky;top:79px;background:white;z-index:5}
+.at{flex:1;padding:13px 6px;border:none;background:transparent;font-size:10.5px;font-weight:700;color:var(--tl);cursor:pointer;transition:var(--tr);border-bottom:2.5px solid transparent;margin-bottom:-2px}
+.at.on{color:var(--gd);border-bottom-color:var(--gd)}
+.asec{display:none;padding:22px}
+.asec.on{display:block}
+.asec h3{font-size:15px;font-weight:800;color:var(--gd);margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.asec h3 i{color:var(--gold)}
+.afg{margin-bottom:13px}
+.afg label{display:block;font-size:10.5px;font-weight:700;color:var(--tm);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.5px}
+.afg input,.afg select,.afg textarea{width:100%;border:1.5px solid #e0e0e0;border-radius:9px;padding:10px 13px;font-size:13px;font-family:'Poppins',sans-serif;outline:none;transition:var(--tr)}
+.afg input:focus,.afg select:focus,.afg textarea:focus{border-color:var(--gm)}
+.afg textarea{resize:vertical;min-height:72px}
+.asvb{width:100%;background:linear-gradient(135deg,var(--gd),var(--gm));color:white;border:none;border-radius:9px;padding:12px;font-size:13px;font-weight:700;cursor:pointer;transition:var(--tr);margin-top:4px;display:flex;align-items:center;justify-content:center;gap:7px}
+.asvb:hover{opacity:0.9}
+.asvb.red{background:linear-gradient(135deg,#b71c1c,#e53935)}
+.asvb.gray{background:#f0f0f0;color:#333}
+.al{margin-top:20px;display:flex;flex-direction:column;gap:10px}
+.ali{background:#f8f9fa;border-radius:9px;padding:13px 15px;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;border:1.5px solid #eee}
+.ali-i{flex:1;min-width:0}
+.ali-i strong{display:block;font-size:13px;color:var(--gd);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ali-i span{font-size:11px;color:var(--tl)}
+.ali-a{display:flex;gap:6px;flex-shrink:0}
+.aab{width:32px;height:32px;border:none;border-radius:7px;cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center}
+.aab.d{background:#ffebee;color:#c62828}
+.asc{background:#e8f5e9;border:1px solid #a5d6a7;color:var(--gd);border-radius:9px;padding:11px 15px;font-size:12px;margin-top:10px;display:none;align-items:center;gap:7px}
+.adv{height:1px;background:#f0f0f0;margin:20px 0}
+
+/* TOAST */
+.toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(90px);background:var(--gd);color:white;padding:13px 28px;border-radius:32px;font-size:13px;z-index:99999;transition:transform 0.35s ease;display:flex;align-items:center;gap:9px;white-space:nowrap;box-shadow:0 10px 32px rgba(0,0,0,0.2)}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.toast.err{background:#c62828}
+
+/* ANIMATIONS */
+@keyframes fid{from{opacity:0;transform:translateY(-22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fiu{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-9px)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 20px rgba(249,168,37,0.3)}50%{box-shadow:0 0 60px rgba(249,168,37,0.6)}}
+.rv{opacity:1;transform:translateY(0)}
+.rv.vis{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.svg{grid-template-columns:repeat(2,1fr)}.fg2{grid-template-columns:1fr 1fr}.lg{grid-template-columns:1fr}.ag{grid-template-columns:1fr}}
+@media(max-width:768px){.nls{display:none}.hbg{display:flex}.sec{padding:60px 16px}.abadge{display:none}.vm{grid-template-columns:1fr}.fr{grid-template-columns:1fr}.cg{grid-template-columns:1fr}.fg2{grid-template-columns:1fr}.hbtns{flex-direction:column;align-items:center}.svg{grid-template-columns:1fr}.ng{grid-template-columns:1fr}.gg{grid-template-columns:repeat(2,1fr)}.gi:first-child{grid-column:span 2}.mg{grid-template-columns:1fr}}
+@media(max-width:520px){.sg{grid-template-columns:repeat(2,1fr)}.si{border-right:none;border-bottom:1px solid rgba(255,255,255,0.1)}.tg{grid-template-columns:repeat(2,1fr)}.gg{grid-template-columns:1fr}.gi:first-child{grid-column:span 1}}
+</style>
+<body class="lang-ne">
+<nav id="nb">
+  <div class="ni">
+    <a href="#hero" class="nl">
+      <div class="nli"><img src="logo.png" alt="SFACL"></div>
+      <div class="nlt">
+        <div class="t1">SFACL Jetharahiya</div>
+        <div class="t2 ne">साना किसान कृषि सहकारी संस्था लि.</div>
+        <div class="t2 en">Small Farmer Agri. Co-operative Ltd.</div>
+      </div>
+    </a>
+    <ul class="nls">
+      <li><a href="#about" class="ne">हाम्रो बारेमा</a><a href="#about" class="en">About</a></li>
+      <li><a href="#services" class="ne">सेवाहरू</a><a href="#services" class="en">Services</a></li>
+      <li><a href="#loan" class="ne">कर्जा</a><a href="#loan" class="en">Loan</a></li>
+      <li><a href="#team" class="ne">टोली</a><a href="#team" class="en">Team</a></li>
+      <li><a href="#notice" class="ne">सूचना</a><a href="#notice" class="en">Notice</a></li>
+      <li><a href="#gallery" class="ne">ग्यालेरी</a><a href="#gallery" class="en">Gallery</a></li>
+      <li><a href="#contact" class="ne">सम्पर्क</a><a href="#contact" class="en">Contact</a></li>
+    </ul>
+    <div class="nr">
+      <button class="lbtn" onclick="toggleLang()" id="ltog">EN</button>
+      <button class="abtn" onclick="window.location.href='admin.html'"><i class="fas fa-lock"></i> Admin</button>
+      <div class="hbg" id="hbg" onclick="toggleMnav()"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</nav>
+<div class="mnav" id="mnav">
+  <a href="#about" onclick="closeMnav()"><span class="ne">हाम्रो बारेमा</span><span class="en">About</span></a>
+  <a href="#services" onclick="closeMnav()"><span class="ne">सेवाहरू</span><span class="en">Services</span></a>
+  <a href="#loan" onclick="closeMnav()"><span class="ne">कर्जा जानकारी</span><span class="en">Loan Info</span></a>
+  <a href="#membership" onclick="closeMnav()"><span class="ne">सदस्यता</span><span class="en">Membership</span></a>
+  <a href="#team" onclick="closeMnav()"><span class="ne">हाम्रो टोली</span><span class="en">Our Team</span></a>
+  <a href="#notice" onclick="closeMnav()"><span class="ne">सूचना पाटी</span><span class="en">Notice Board</span></a>
+  <a href="#gallery" onclick="closeMnav()"><span class="ne">ग्यालेरी</span><span class="en">Gallery</span></a>
+  <a href="#contact" onclick="closeMnav()"><span class="ne">सम्पर्क</span><span class="en">Contact</span></a>
+  <div class="mnav-btns">
+    <button class="lbtn" style="flex:1" onclick="toggleLang()">EN/NE</button>
+    <button class="abtn" style="flex:1" onclick="openAdmin();closeMnav()"><i class="fas fa-lock"></i> Admin</button>
+  </div>
+</div>
+<section id="hero">
+  <div class="hbp"></div>
+  <div class="hpart" id="parts"></div>
+  <div class="hc">
+    <div class="hbadge"><i class="fas fa-leaf"></i><span class="ne">स्थापना २०६० • जेठरहिया, रौतहट, मधेश प्रदेश</span><span class="en">Est. 2060 BS • Jetharahiya, Rautahat, Madhesh Province</span></div>
+    <div class="hring"><img src="logo.png" alt="SFACL Logo"></div>
+    <h1 class="ht"><span class="ne">साना किसान<br><span class="g">कृषि सहकारी</span></span><span class="en">Small Farmer<br><span class="g">Agri-Cooperative</span></span></h1>
+    <p class="hs ne">संस्था लि. — जेठरहिया</p>
+    <p class="hs en">SFACL — Jetharahiya</p>
+    <p class="htag ne">किसानको भरोसा • समृद्धिको आधार • एकताको शक्ति</p>
+    <p class="htag en">Farmer's Trust • Foundation of Prosperity • Strength of Unity</p>
+    <div class="hbtns">
+      <a href="#membership" class="bp"><i class="fas fa-user-plus"></i><span class="ne">सदस्य बन्नुहोस्</span><span class="en">Become a Member</span></a>
+      <a href="#loan" class="bo"><i class="fas fa-hand-holding-usd"></i><span class="ne">कर्जा जानकारी</span><span class="en">Loan Info</span></a>
+    </div>
+  </div>
+  <div class="hero-farmer"><span class="farmer-icon">👨‍🌾</span><span class="farmer-icon">🚜</span><span class="farmer-icon">🌾</span><span class="farmer-icon">👨‍🌾</span><span class="farmer-icon">🌱</span></div><div class="hscr"><i class="fas fa-chevron-down"></i><span class="ne">तल स्क्रोल</span><span class="en">Scroll Down</span></div>
+  <div class="loan-belt">
+    <div class="loan-belt-inner">
+      <div class="belt-item"><i class="fas fa-hand-holding-usd"></i><span class="ne">कृषि कर्जा — ११% ब्याज</span><span class="en">Agri Loan — 11% Interest</span></div>
+      <div class="belt-item"><i class="fas fa-cow"></i><span class="ne">पशुपालन कर्जा — १२% ब्याज</span><span class="en">Livestock Loan — 12%</span></div>
+      <div class="belt-item"><i class="fas fa-home"></i><span class="ne">घर कर्जा — १३% ब्याज</span><span class="en">Home Loan — 13%</span></div>
+      <div class="belt-item"><i class="fas fa-store"></i><span class="ne">व्यवसाय कर्जा — १३.५% ब्याज</span><span class="en">Business Loan — 13.5%</span></div>
+      <div class="belt-item"><i class="fas fa-piggy-bank"></i><span class="ne">बचत खाता — आकर्षक ब्याज</span><span class="en">Savings — Attractive Rate</span></div>
+      <div class="belt-item"><i class="fas fa-users"></i><span class="ne">५०० भन्दा बढी सदस्यहरू</span><span class="en">500+ Members</span></div>
+      <div class="belt-item"><i class="fas fa-hand-holding-usd"></i><span class="ne">कृषि कर्जा — ११% ब्याज</span><span class="en">Agri Loan — 11% Interest</span></div>
+      <div class="belt-item"><i class="fas fa-cow"></i><span class="ne">पशुपालन कर्जा — १२% ब्याज</span><span class="en">Livestock Loan — 12%</span></div>
+      <div class="belt-item"><i class="fas fa-home"></i><span class="ne">घर कर्जा — १३% ब्याज</span><span class="en">Home Loan — 13%</span></div>
+      <div class="belt-item"><i class="fas fa-store"></i><span class="ne">व्यवसाय कर्जा — १३.५% ब्याज</span><span class="en">Business Loan — 13.5%</span></div>
+      <div class="belt-item"><i class="fas fa-piggy-bank"></i><span class="ne">बचत खाता — आकर्षक ब्याज</span><span class="en">Savings — Attractive Rate</span></div>
+      <div class="belt-item"><i class="fas fa-users"></i><span class="ne">५०० भन्दा बढी सदस्यहरू</span><span class="en">500+ Members</span></div>
+    </div>
+  </div>
+</section>
+<section id="stats">
+  <div class="sg">
+    <div class="si rv"><div class="sn"><span class="count" data-target="500">0</span>+</div><div class="sl ne">कुल सदस्यहरू</div><div class="sl en">Total Members</div></div>
+    <div class="si rv"><div class="sn"><span class="count" data-target="25">0</span>+</div><div class="sl ne">वर्षको अनुभव</div><div class="sl en">Years Experience</div></div>
+    <div class="si rv"><div class="sn">रू<span class="count" data-target="50">0</span>L+</div><div class="sl ne">कर्जा वितरण</div><div class="sl en">Loan Distributed</div></div>
+    <div class="si rv"><div class="sn"><span class="count" data-target="100">0</span>%</div><div class="sl ne">विश्वास र पारदर्शिता</div><div class="sl en">Trust & Transparency</div></div>
+  </div>
+</section>
+<body class="lang-ne">
+<nav id="nb">
+  <div class="ni">
+    <a href="#hero" class="nl">
+      <div class="nli"><img src="logo.png" alt="SFACL"></div>
+      <div class="nlt">
+        <div class="t1">SFACL Jetharahiya</div>
+        <div class="t2 ne">साना किसान कृषि सहकारी संस्था लि.</div>
+        <div class="t2 en">Small Farmer Agri. Co-operative Ltd.</div>
+      </div>
+    </a>
+    <ul class="nls">
+      <li><a href="#about" class="ne">हाम्रो बारेमा</a><a href="#about" class="en">About</a></li>
+      <li><a href="#services" class="ne">सेवाहरू</a><a href="#services" class="en">Services</a></li>
+      <li><a href="#loan" class="ne">कर्जा</a><a href="#loan" class="en">Loan</a></li>
+      <li><a href="#team" class="ne">टोली</a><a href="#team" class="en">Team</a></li>
+      <li><a href="#notice" class="ne">सूचना</a><a href="#notice" class="en">Notice</a></li>
+      <li><a href="#gallery" class="ne">ग्यालेरी</a><a href="#gallery" class="en">Gallery</a></li>
+      <li><a href="#contact" class="ne">सम्पर्क</a><a href="#contact" class="en">Contact</a></li>
+    </ul>
+    <div class="nr">
+      <button class="lbtn" onclick="toggleLang()" id="ltog">EN</button>
+      <button class="abtn" onclick="window.location.href='admin.html'"><i class="fas fa-lock"></i> Admin</button>
+      <div class="hbg" id="hbg" onclick="toggleMnav()"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</nav>
+<div class="mnav" id="mnav">
+  <a href="#about" onclick="closeMnav()"><span class="ne">हाम्रो बारेमा</span><span class="en">About</span></a>
+  <a href="#services" onclick="closeMnav()"><span class="ne">सेवाहरू</span><span class="en">Services</span></a>
+  <a href="#loan" onclick="closeMnav()"><span class="ne">कर्जा</span><span class="en">Loan</span></a>
+  <a href="#membership" onclick="closeMnav()"><span class="ne">सदस्यता</span><span class="en">Membership</span></a>
+  <a href="#team" onclick="closeMnav()"><span class="ne">टोली</span><span class="en">Team</span></a>
+  <a href="#notice" onclick="closeMnav()"><span class="ne">सूचना</span><span class="en">Notice</span></a>
+  <a href="#gallery" onclick="closeMnav()"><span class="ne">ग्यालेरी</span><span class="en">Gallery</span></a>
+  <a href="#contact" onclick="closeMnav()"><span class="ne">सम्पर्क</span><span class="en">Contact</span></a>
+  <div class="mnav-btns">
+    <button class="lbtn" style="flex:1" onclick="toggleLang()">EN/NE</button>
+    <button class="abtn" style="flex:1" onclick="openAdmin();closeMnav()"><i class="fas fa-lock"></i> Admin</button>
+  </div>
+</div>
+
+<section id="stats">
+  <div class="sg">
+    <div class="si rv"><div class="sn"><span class="count" data-target="500">0</span>+</div><div class="sl ne">कुल सदस्यहरू</div><div class="sl en">Total Members</div></div>
+    <div class="si rv"><div class="sn"><span class="count" data-target="25">0</span>+</div><div class="sl ne">वर्षको अनुभव</div><div class="sl en">Years Experience</div></div>
+    <div class="si rv"><div class="sn">रू<span class="count" data-target="50">0</span>L+</div><div class="sl ne">कर्जा वितरण</div><div class="sl en">Loan Distributed</div></div>
+    <div class="si rv"><div class="sn"><span class="count" data-target="100">0</span>%</div><div class="sl ne">विश्वास र पारदर्शिता</div><div class="sl en">Trust & Transparency</div></div>
+  </div>
+</section>
+<section id="about" class="sec seca">
+  <div class="con">
+    <div class="sh rv">
+      <div class="sey"><span class="ne">हाम्रो बारेमा</span><span class="en">About Us</span></div>
+      <h2 class="st ne">किसानहरूको आफ्नै संस्था</h2>
+      <h2 class="ste en">Our Own Institution for Farmers</h2>
+    </div>
+    <div class="ag">
+      <div class="avis rv">
+        <div class="aiph"><i class="fas fa-tractor"></i><strong style="font-size:16px;color:var(--gd);font-family:'Tiro Devanagari Nepali',serif">SFACL जेठरहिया</strong><p style="font-size:13px;color:var(--tl)">संस्थाको फोटो यहाँ राख्नुहोस्</p></div>
+        <div class="abadge"><div class="num">२०६०</div><div class="lbl ne">स्थापना वर्ष</div><div class="lbl en">Est. Year</div></div>
+      </div>
+      <div class="ac rv">
+        <h3 class="ne">हाम्रो परिचय</h3>
+        <h3 class="en" style="font-family:'Poppins',sans-serif;font-size:26px;color:var(--gd);margin-bottom:18px">Our Introduction</h3>
+        <p class="ne">साना किसान कृषि सहकारी संस्था लि. (SFACL) स्थापना वि.सं. २०६० मा भएको हो। यो संस्था यमुनामाई गाउँपालिका वडा नं.-१, जेठरहिया, रौतहटमा अवस्थित छ। संस्थाको मूल उद्देश्य साना तथा मझौला किसानहरूलाई सहुलियत दरमा कर्जा प्रदान गरी उनीहरूको जीवनस्तर उकास्नु हो।</p>
+        <p class="en" style="font-family:'Poppins',sans-serif;font-size:14px;line-height:1.8">SFACL was established in 2060 BS at Yamunamai Rural Municipality Ward No. 1, Jetharahiya, Rautahat. Our primary goal is to uplift the living standards of small and medium farmers.</p>
+        <div class="vm">
+          <div class="vmc"><h4><i class="fas fa-eye" style="color:var(--gold)"></i><span class="ne">हाम्रो दृष्टि</span><span class="en">Vision</span></h4><p class="ne">समृद्ध र आत्मनिर्भर किसान समुदाय।</p><p class="en">Prosperous and self-reliant farming community.</p></div>
+          <div class="vmc"><h4><i class="fas fa-bullseye" style="color:var(--gold)"></i><span class="ne">हाम्रो लक्ष्य</span><span class="en">Mission</span></h4><p class="ne">किफायती कर्जा र कृषि सेवाको पहुँच।</p><p class="en">Ensure access to affordable credit and agricultural services.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="services" class="sec">
+  <div class="con">
+    <div class="sh rv">
+      <div class="sey"><span class="ne">हाम्रा सेवाहरू</span><span class="en">Our Services</span></div>
+      <h2 class="st ne">किसानका लागि सम्पूर्ण सेवा</h2>
+      <h2 class="ste en">Complete Services for Farmers</h2>
+    </div>
+    <div class="svg">
+      <div class="svc rv"><div class="svi"><i class="fas fa-hand-holding-usd"></i></div><h3 class="ne">कृषि कर्जा</h3><h3 class="en" style="font-family:'Poppins',sans-serif;font-size:17px;color:var(--gd);margin-bottom:10px">Agricultural Loan</h3><p class="ne">सहुलियत ब्याजदरमा कृषि कर्जा। बीउ, मल, सिँचाइ र उपकरणका लागि।</p><p class="en" style="font-family:'Poppins',sans-serif">Subsidized loans for seeds, fertilizers, irrigation and farming equipment.</p></div>
+      <div class="svc rv"><div class="svi"><i class="fas fa-piggy-bank"></i></div><h3 class="ne">बचत सेवा</h3><h3 class="en" style="font-family:'Poppins',sans-serif;font-size:17px;color:var(--gd);margin-bottom:10px">Savings Service</h3><p class="ne">नियमित बचत खाता, मुद्दती निक्षेप र आकर्षक ब्याजदर।</p><p class="en" style="font-family:'Poppins',sans-serif">Regular savings accounts and fixed deposits with attractive interest rates.</p></div>
+      <div class="svc rv"><div class="svi"><i class="fas fa-seedling"></i></div><h3 class="ne">कृषि परामर्श</h3><h3 class="en" style="font-family:'Poppins',sans-serif;font-size:17px;color:var(--gd);margin-bottom:10px">Agricultural Advice</h3><p class="ne">आधुनिक खेती प्रविधि र बजार जानकारीका लागि नि:शुल्क परामर्श।</p><p class="en" style="font-family:'Poppins',sans-serif">Free consultation on modern farming and market information.</p></div>
+      <div class="svc rv"><div class="svi"><i class="fas fa-shield-alt"></i></div><h3 class="ne">बीमा सेवा</h3><h3 class="en" style="font-family:'Poppins',sans-serif;font-size:17px;color:var(--gd);margin-bottom:10px">Insurance Service</h3><p class="ne">बाली बीमा, पशुधन बीमा र जीवन बीमाको सुविधा।</p><p class="en" style="font-family:'Poppins',sans-serif">Crop, livestock and life insurance facilities for members.</p></div>
+      <div class="svc rv"><div class="svi"><i class="fas fa-tractor"></i></div><h3 class="ne">कृषि उपकरण</h3><h3 class="en" style="font-family:'Poppins',sans-serif;font-size:17px;color:var(--gd);margin-bottom:10px">Farm Equipment</h3><p class="ne">ट्र्याक्टर, थ्रेसर र अन्य उपकरण भाडामा र किन्न सहयोग।</p><p class="en" style="font-family:'Poppins',sans-serif">Help in renting and purchasing tractors and farm equipment.</p></div>
+      <div class="svc rv"><div class="svi"><i class="fas fa-users"></i></div><h3 class="ne">सामूहिक खेती</h3><h3 class="en" style="font-family:'Poppins',sans-serif;font-size:17px;color:var(--gd);margin-bottom:10px">Collective Farming</h3><p class="ne">सामूहिक खेती कार्यक्रम र किसान समूह गठनमा सहयोग।</p><p class="en" style="font-family:'Poppins',sans-serif">Collective farming programs and support in forming farmer groups.</p></div>
+    </div>
+  </div>
+</section>
+<section id="loan" class="sec seca">
+  <div class="con">
+    <div class="sh rv">
+      <div class="sey"><span class="ne">कर्जा जानकारी</span><span class="en">Loan Information</span></div>
+      <h2 class="st ne">कर्जाका प्रकार र ब्याजदर</h2>
+      <h2 class="ste en">Loan Types & Interest Rates</h2>
+    </div>
+    <div class="lg">
+      <div class="lts">
+        <div class="lc rv"><div class="li"><i class="fas fa-wheat-awn"></i></div><div><h4 class="ne">कृषि कर्जा</h4><h4 class="en" style="font-family:'Poppins',sans-serif;font-size:14px;font-weight:700;color:var(--gd);margin-bottom:5px">Agriculture Loan</h4><p class="ne">बाली उत्पादनका लागि। अधिकतम रू. ५ लाखसम्म।</p><p class="en" style="font-family:'Poppins',sans-serif">For crop production. Up to Rs. 5 Lakh.</p></div></div>
+        <div class="lc rv"><div class="li"><i class="fas fa-cow"></i></div><div><h4 class="ne">पशुपालन कर्जा</h4><h4 class="en" style="font-family:'Poppins',sans-serif;font-size:14px;font-weight:700;color:var(--gd);margin-bottom:5px">Livestock Loan</h4><p class="ne">गाई, भैंसी, बाख्रा पालनका लागि। अधिकतम रू. ३ लाखसम्म।</p><p class="en" style="font-family:'Poppins',sans-serif">For livestock farming. Up to Rs. 3 Lakh.</p></div></div>
+        <div class="lc rv"><div class="li"><i class="fas fa-home"></i></div><div><h4 class="ne">घर कर्जा</h4><h4 class="en" style="font-family:'Poppins',sans-serif;font-size:14px;font-weight:700;color:var(--gd);margin-bottom:5px">Home Loan</h4><p class="ne">घर निर्माण तथा मर्मतका लागि। अधिकतम रू. १० लाखसम्म।</p><p class="en" style="font-family:'Poppins',sans-serif">For home construction. Up to Rs. 10 Lakh.</p></div></div>
+        <div class="lc rv"><div class="li"><i class="fas fa-store"></i></div><div><h4 class="ne">व्यवसाय कर्जा</h4><h4 class="en" style="font-family:'Poppins',sans-serif;font-size:14px;font-weight:700;color:var(--gd);margin-bottom:5px">Business Loan</h4><p class="ne">साना व्यवसाय सञ्चालनका लागि। अधिकतम रू. ५ लाखसम्म।</p><p class="en" style="font-family:'Poppins',sans-serif">For small business. Up to Rs. 5 Lakh.</p></div></div>
+      </div>
+      <div class="lrb rv">
+        <h3><i class="fas fa-percentage"></i> <span class="ne">ब्याजदर तालिका</span><span class="en">Interest Rate Table</span></h3>
+        <table class="rt">
+          <thead><tr><th><span class="ne">कर्जा</span><span class="en">Loan</span></th><th><span class="ne">ब्याज</span><span class="en">Rate</span></th><th><span class="ne">अवधि</span><span class="en">Period</span></th></tr></thead>
+          <tbody>
+            <tr><td><span class="ne">कृषि</span><span class="en">Agri</span></td><td class="rh">११%</td><td><span class="ne">१ वर्ष</span><span class="en">1 Year</span></td></tr>
+            <tr><td><span class="ne">पशुपालन</span><span class="en">Livestock</span></td><td class="rh">१२%</td><td><span class="ne">२ वर्ष</span><span class="en">2 Years</span></td></tr>
+            <tr><td><span class="ne">घर</span><span class="en">Home</span></td><td class="rh">१३%</td><td><span class="ne">५ वर्ष</span><span class="en">5 Years</span></td></tr>
+            <tr><td><span class="ne">व्यवसाय</span><span class="en">Business</span></td><td class="rh">१३.५%</td><td><span class="ne">३ वर्ष</span><span class="en">3 Years</span></td></tr>
+          </tbody>
+        </table>
+        <div class="ps">
+          <h4><i class="fas fa-list-ol"></i> <span class="ne">आवेदन प्रक्रिया</span><span class="en">Application Process</span></h4>
+          <div class="step"><div class="stn">१</div><p class="ne">SFACL कार्यालयमा सम्पर्क गर्नुहोस्</p><p class="en" style="font-family:'Poppins',sans-serif;color:rgba(255,255,255,0.82)">Contact SFACL office</p></div>
+          <div class="step"><div class="stn">२</div><p class="ne">आवश्यक कागजातहरू तयार गर्नुहोस्</p><p class="en" style="font-family:'Poppins',sans-serif;color:rgba(255,255,255,0.82)">Prepare required documents</p></div>
+          <div class="step"><div class="stn">३</div><p class="ne">आवेदन फारम भर्नुहोस् र जम्मा गर्नुहोस्</p><p class="en" style="font-family:'Poppins',sans-serif;color:rgba(255,255,255,0.82)">Fill and submit application</p></div>
+          <div class="step"><div class="stn">४</div><p class="ne">स्वीकृति पछि कर्जा प्राप्त गर्नुहोस्</p><p class="en" style="font-family:'Poppins',sans-serif;color:rgba(255,255,255,0.82)">Receive loan after approval</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="membership" class="sec">
+  <div class="con">
+    <div class="sh rv">
+      <div class="sey"><span class="ne">सदस्यता</span><span class="en">Membership</span></div>
+      <h2 class="st ne">हाम्रो परिवारमा सामेल हुनुहोस्</h2>
+      <h2 class="ste en">Join Our Family</h2>
+    </div>
+    <div class="mg">
+      <div class="mbc rv"><div class="mbi"><i class="fas fa-percentage"></i></div><div><h4 class="ne">सहुलियत कर्जा</h4><h4 class="en" style="font-family:'Poppins',sans-serif">Subsidized Loan</h4><p class="ne">सदस्यहरूलाई कम ब्याजदरमा कर्जा सुविधा।</p><p class="en" style="font-family:'Poppins',sans-serif">Low-interest loan facility for members.</p></div></div>
+      <div class="mbc rv"><div class="mbi"><i class="fas fa-chart-line"></i></div><div><h4 class="ne">उच्च ब्याज बचत</h4><h4 class="en" style="font-family:'Poppins',sans-serif">High Interest Savings</h4><p class="ne">बचतमा आकर्षक ब्याजदर र नियमित लाभांश।</p><p class="en" style="font-family:'Poppins',sans-serif">Attractive interest rate and regular dividend.</p></div></div>
+      <div class="mbc rv"><div class="mbi"><i class="fas fa-graduation-cap"></i></div><div><h4 class="ne">नि:शुल्क प्रशिक्षण</h4><h4 class="en" style="font-family:'Poppins',sans-serif">Free Training</h4><p class="ne">आधुनिक कृषि प्रविधिमा नि:शुल्क तालिम।</p><p class="en" style="font-family:'Poppins',sans-serif">Free training on modern agricultural technology.</p></div></div>
+      <div class="mbc rv"><div class="mbi"><i class="fas fa-heartbeat"></i></div><div><h4 class="ne">सामाजिक सुरक्षा</h4><h4 class="en" style="font-family:'Poppins',sans-serif">Social Security</h4><p class="ne">बीमा, स्वास्थ्य सहयोग र सामाजिक कोषको सुविधा।</p><p class="en" style="font-family:'Poppins',sans-serif">Insurance, health support and social fund benefits.</p></div></div>
+    </div>
+    <div class="mfb rv">
+      <h3 class="ne"><i class="fas fa-user-plus" style="color:var(--gold);margin-right:9px"></i>सदस्यता आवेदन</h3>
+      <h3 class="en" style="font-family:'Poppins',sans-serif;font-size:22px;color:var(--gd);margin-bottom:28px;text-align:center"><i class="fas fa-user-plus" style="color:var(--gold);margin-right:9px"></i>Membership Application</h3>
+      <div class="fr">
+        <div class="fg"><label class="ne">पूरा नाम *</label><label class="en">Full Name *</label><input type="text" id="mn" placeholder="पूरा नाम / Full Name"></div>
+        <div class="fg"><label class="ne">सम्पर्क नम्बर *</label><label class="en">Phone *</label><input type="tel" id="mp" placeholder="98XXXXXXXX"></div>
+      </div>
+      <div class="fr">
+        <div class="fg"><label class="ne">ठेगाना</label><label class="en">Address</label><input type="text" id="ma" placeholder="गाउँ/वडा"></div>
+        <div class="fg"><label class="ne">सेवा चाहिएको</label><label class="en">Service</label><select id="ms"><option value="">छान्नुहोस्</option><option>कर्जा / Loan</option><option>बचत / Savings</option><option>दुवै / Both</option></select></div>
+      </div>
+      <div class="fg"><label class="ne">थप जानकारी</label><label class="en">Additional Info</label><textarea id="mm" rows="3" placeholder="आफ्नो आवश्यकता..."></textarea></div>
+      <button class="bp" style="width:100%;justify-content:center;border-radius:12px;font-size:16px" onclick="subMem()"><i class="fas fa-paper-plane"></i><span class="ne">आवेदन पठाउनुहोस्</span><span class="en">Submit Application</span></button>
+    </div>
+  </div>
+</section>
+<section id="team" class="sec seca">
+  <div class="con">
+    <div class="sh rv">
+      <div class="sey"><span class="ne">हाम्रो टोली</span><span class="en">Our Team</span></div>
+      <h2 class="st ne">अनुभवी र समर्पित कर्मचारीहरू</h2>
+      <h2 class="ste en">Experienced & Dedicated Staff</h2>
+    </div>
+    <div class="tg" id="tg"></div>
+  </div>
+</section>
+<section id="gallery" class="sec">
+  <div class="con">
+    <div class="sh rv">
+      <div class="sey"><span class="ne">फोटो ग्यालेरी</span><span class="en">Photo Gallery</span></div>
+      <h2 class="st ne">हाम्रा क्षणहरू</h2>
+      <h2 class="ste en">Our Moments</h2>
+    </div>
+    <div class="gg" id="gg"></div>
+  </div>
+</section>
+<div class="lb" id="lb" onclick="closeLb()">
+  <span class="lbc">&times;</span>
+  <img id="lbi" src="" alt="">
+</div>
+<section id="notice" class="sec seca">
+  <div class="con">
+    <div class="sh rv">
+      <div class="sey"><span class="ne">सूचना पाटी</span><span class="en">Notice Board</span></div>
+      <h2 class="st ne">ताजा सूचना र घोषणाहरू</h2>
+      <h2 class="ste en">Latest Notices & Announcements</h2>
+    </div>
+    <div class="ng" id="ng"></div>
+  </div>
+</section>
+<section id="contact" class="sec">
+  <div class="con">
+    <div class="sh rv">
+      <div class="sey"><span class="ne">सम्पर्क</span><span class="en">Contact</span></div>
+      <h2 class="st ne">हामीलाई सम्पर्क गर्नुहोस्</h2>
+      <h2 class="ste en">Get In Touch</h2>
+    </div>
+    <div class="cg">
+      <div class="ci rv">
+        <div class="cit"><div class="cic"><i class="fas fa-map-marker-alt"></i></div><div><h4><span class="ne">ठेगाना</span><span class="en">Address</span></h4><p class="ne">यमुनामाई गाउँपालिका-१, जेठरहिया, रौतहट, मधेश प्रदेश</p><p class="en" style="font-family:'Poppins',sans-serif">Yamunamai-1, Jetharahiya, Rautahat, Madhesh Province</p></div></div>
+        <div class="cit"><div class="cic"><i class="fas fa-phone-alt"></i></div><div><h4><span class="ne">प्रबन्धक</span><span class="en">Manager</span></h4><p class="ne">रामदेनी प्रसाद</p><a href="tel:9796250893" style="font-family:'Poppins',sans-serif;font-size:16px;font-weight:700;color:var(--gd)">9796250893</a></div></div>
+        <div class="cit"><div class="cic"><i class="fas fa-user-tie"></i></div><div><h4><span class="ne">सहायक प्रबन्धक</span><span class="en">Asst. Manager</span></h4><p class="ne">अनिता कुमारी</p><a href="tel:9580920805" style="font-family:'Poppins',sans-serif;font-size:16px;font-weight:700;color:var(--gd)">9580920805</a><a href="mailto:amitasahani609@gmail.com" style="font-size:12px;color:var(--tl);font-family:'Poppins',sans-serif">amitasahani609@gmail.com</a></div></div>
+        <div class="cit"><div class="cic"><i class="fas fa-calculator"></i></div><div><h4><span class="ne">लेखाक</span><span class="en">Accountant</span></h4><p class="ne">रञ्जित बेठा</p><a href="tel:9748335292" style="font-family:'Poppins',sans-serif;font-size:16px;font-weight:700;color:var(--gd)">9748335292</a><a href="mailto:ranjitraajak9898@gmail.com" style="font-size:12px;color:var(--tl);font-family:'Poppins',sans-serif">ranjitraajak9898@gmail.com</a></div></div>
+        <div class="cit"><div class="cic"><i class="fas fa-clock"></i></div><div><h4><span class="ne">कार्यालय समय</span><span class="en">Office Hours</span></h4><p class="ne">आइत–शुक्र: बिहान ९:०० – साँझ ५:०० बजे</p><p class="en" style="font-family:'Poppins',sans-serif">Sun–Fri: 9:00 AM – 5:00 PM</p></div></div>
+      </div>
+      <div class="rv">
+        <div class="mb"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3563.5!2d85.2!3d27.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjfCsDAwJzAwLjAiTiA4NcKwMTInMDAuMCJF!5e0!3m2!1sen!2snp!4v1620000000000!5m2!1sen!2snp" allowfullscreen="" loading="lazy" title="SFACL"></iframe></div>
+        <div class="cfb">
+          <h3 class="ne"><i class="fas fa-paper-plane" style="color:var(--gold);margin-right:8px"></i>सन्देश पठाउनुहोस्</h3>
+          <h3 class="en" style="font-family:'Poppins',sans-serif;font-size:19px;color:var(--gd);margin-bottom:20px"><i class="fas fa-paper-plane" style="color:var(--gold);margin-right:8px"></i>Send a Message</h3>
+          <div class="fg"><input type="text" id="cn" placeholder="तपाईंको नाम / Your name"></div>
+          <div class="fg"><input type="tel" id="cp" placeholder="सम्पर्क नम्बर / Phone"></div>
+          <div class="fg"><textarea rows="4" id="cm" placeholder="सन्देश / Message..."></textarea></div>
+          <button class="bp" style="width:100%;justify-content:center;border-radius:12px" onclick="subCon()"><i class="fas fa-paper-plane"></i><span class="ne">पठाउनुहोस्</span><span class="en">Send</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="fg2">
+    <div class="fb">
+      <div class="flw">
+        <div class="fli"><img src="logo.png" alt="SFACL"></div>
+        <div><div class="fbn">SFACL Jetharahiya</div><div class="fbs ne">साना किसान कृषि सहकारी संस्था लि.</div><div class="fbs en">Small Farmer Agriculture Cooperative Ltd.</div></div>
+      </div>
+      <p class="ne">किसानको भरोसा, समृद्धिको आधार। यमुनामाई गाउँपालिका-१, जेठरहिया, रौतहटमा स्थापित। स्थापना वि.सं. २०६०।</p>
+      <p class="en" style="font-family:'Poppins',sans-serif">Farmer's trust, foundation of prosperity. Established at Yamunamai-1, Jetharahiya, Rautahat since 2060 BS.</p>
+      <div class="fsc">
+        <a href="https://www.facebook.com/share/1Ct75pTkeE/?mibextid=wwXIfr" target="_blank" class="fsl"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://wa.me/81909036694264" target="_blank" class="fsl"><i class="fab fa-whatsapp"></i></a>
+        <a href="tel:9796250893" class="fsl"><i class="fas fa-phone"></i></a>
+        <a href="mailto:amitasahani609@gmail.com" class="fsl"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+    <div class="fc">
+      <h4><span class="ne">सेवाहरू</span><span class="en">Services</span></h4>
+      <ul>
+        <li><a href="#loan"><i class="fas fa-chevron-right"></i><span class="ne">कृषि कर्जा</span><span class="en">Agri Loan</span></a></li>
+        <li><a href="#loan"><i class="fas fa-chevron-right"></i><span class="ne">बचत सेवा</span><span class="en">Savings</span></a></li>
+        <li><a href="#loan"><i class="fas fa-chevron-right"></i><span class="ne">पशुपालन कर्जा</span><span class="en">Livestock Loan</span></a></li>
+        <li><a href="#services"><i class="fas fa-chevron-right"></i><span class="ne">बीमा सेवा</span><span class="en">Insurance</span></a></li>
+        <li><a href="#membership"><i class="fas fa-chevron-right"></i><span class="ne">सदस्यता</span><span class="en">Membership</span></a></li>
+        <li><a href="#notice"><i class="fas fa-chevron-right"></i><span class="ne">सूचना</span><span class="en">Notice</span></a></li>
+      </ul>
+    </div>
+    <div class="fc">
+      <h4><span class="ne">सम्पर्क</span><span class="en">Contact</span></h4>
+      <ul>
+        <li><a href="tel:9796250893"><i class="fas fa-phone"></i>9796250893</a></li>
+        <li><a href="tel:9580920805"><i class="fas fa-phone"></i>9580920805</a></li>
+        <li><a href="tel:9748335292"><i class="fas fa-phone"></i>9748335292</a></li>
+        <li><a href="mailto:amitasahani609@gmail.com"><i class="fas fa-envelope"></i>amitasahani609</a></li>
+        <li><a href="mailto:ranjusamridhi@gmail.com"><i class="fas fa-envelope"></i>ranjusamridhi</a></li>
+        <li><a href="https://wa.me/81909036694264" target="_blank"><i class="fab fa-whatsapp"></i>+81 09036694264</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fbot">
+    <p>&copy; 2083 SFACL Jetharahiya. <span class="ne">सर्वाधिकार सुरक्षित।</span><span class="en">All rights reserved.</span></p>
+    <div class="dev">
+      <span class="devb">DEV</span>
+      <span>Designed & Developed by</span>
+      <a href="https://rajumahato.it.com" target="_blank">Raju Mahato</a>
+      <span style="color:rgba(255,255,255,0.2)">|</span>
+      <a href="https://wa.me/81909036694264" target="_blank" style="color:var(--gold)"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.facebook.com/share/1Ct75pTkeE/?mibextid=wwXIfr" target="_blank" style="color:var(--gold)"><i class="fab fa-facebook-f"></i></a>
+      <a href="mailto:mahatodigambar0509@gmail.com" style="color:var(--gold)"><i class="fas fa-envelope"></i></a>
+      <span style="color:rgba(255,255,255,0.35);font-size:11px">Nepal's #1 Individual Developer 🇳🇵</span>
+    </div>
+  </div>
+</footer>
+<div id="ao" onclick="closeAdmin()"></div>
+<div id="ap">
+  <div class="aph">
+    <div><h2><i class="fas fa-shield-alt" style="color:var(--gold);margin-right:8px"></i>Admin Panel</h2><p>SFACL Jetharahiya — Secure Access</p></div>
+    <button class="apc" onclick="closeAdmin()">&times;</button>
+  </div>
+  <div class="alog" id="alogs">
+    <h3>🔐 Admin Login</h3>
+    <p>अधिकृत कर्मचारीका लागि मात्र।</p>
+    <input type="text" class="ai" placeholder="Username" id="au" value="admin">
+    <input type="password" class="ai" placeholder="Password" id="apw">
+    <p style="font-size:11px;color:var(--tl);margin-bottom:12px">Default: sfacl2060</p>
+    <button class="asb" onclick="aLogin()"><i class="fas fa-sign-in-alt"></i> Login</button>
+    <p class="aerr" id="aerr">❌ गलत पासवर्ड!</p>
+  </div>
+  <div class="acont" id="acont">
+    <div class="ats">
+      <button class="at on" onclick="swTab('staff',this)"><i class="fas fa-users"></i><br>Staff</button>
+      <button class="at" onclick="swTab('notice',this)"><i class="fas fa-bell"></i><br>Notice</button>
+      <button class="at" onclick="swTab('gallery',this)"><i class="fas fa-images"></i><br>Gallery</button>
+      <button class="at" onclick="swTab('stats',this)"><i class="fas fa-chart-bar"></i><br>Stats</button>
+      <button class="at" onclick="swTab('settings',this)"><i class="fas fa-cog"></i><br>Settings</button>
+    </div>
+    <div class="asec on" id="tab-staff">
+      <h3><i class="fas fa-user-plus"></i>कर्मचारी थप्नुहोस्</h3>
+      <div class="afg"><label>नाम *</label><input type="text" id="sn" placeholder="पूरा नाम"></div>
+      <div class="afg"><label>पद *</label><input type="text" id="sp" placeholder="जस्तै: प्रबन्धक"></div>
+      <div class="afg"><label>फोन</label><input type="tel" id="sph" placeholder="98XXXXXXXX"></div>
+      <div class="afg"><label>Email</label><input type="email" id="sem" placeholder="email@example.com"></div>
+      <div class="afg"><label>फोटो URL</label><input type="url" id="spt" placeholder="https://..."></div>
+      <button class="asvb" onclick="addStaff()"><i class="fas fa-plus"></i>थप्नुहोस्</button>
+      <div class="asc" id="ssc"><i class="fas fa-check-circle"></i>थपियो!</div>
+      <div class="adv"></div>
+      <h3><i class="fas fa-list"></i>कर्मचारी सूची</h3>
+      <div class="al" id="asl"></div>
+    </div>
+    <div class="asec" id="tab-notice">
+      <h3><i class="fas fa-plus-circle"></i>नयाँ सूचना</h3>
+      <div class="afg"><label>शीर्षक *</label><input type="text" id="nt" placeholder="सूचनाको शीर्षक"></div>
+      <div class="afg"><label>विवरण</label><textarea id="nb2" placeholder="सूचनाको विवरण..."></textarea></div>
+      <div class="afg"><label>प्रकार</label><select id="ntp"><option value="normal">साधारण</option><option value="urgent">जरुरी</option></select></div>
+      <button class="asvb" onclick="addNotice()"><i class="fas fa-plus"></i>थप्नुहोस्</button>
+      <div class="asc" id="nsc"><i class="fas fa-check-circle"></i>थपियो!</div>
+      <div class="adv"></div>
+      <h3><i class="fas fa-list"></i>सूचना सूची</h3>
+      <div class="al" id="anl"></div>
+    </div>
+    <div class="asec" id="tab-gallery">
+      <h3><i class="fas fa-image"></i>फोटो थप्नुहोस्</h3>
+      <div class="afg"><label>फोटो URL *</label><input type="url" id="gu" placeholder="https://..."></div>
+      <div class="afg"><label>Caption</label><input type="text" id="gc" placeholder="फोटोको विवरण"></div>
+      <button class="asvb" onclick="addGallery()"><i class="fas fa-plus"></i>थप्नुहोस्</button>
+      <div class="asc" id="gsc"><i class="fas fa-check-circle"></i>थपियो!</div>
+      <div class="adv"></div>
+      <h3><i class="fas fa-list"></i>फोटो सूची</h3>
+      <div class="al" id="agl"></div>
+    </div>
+    <div class="asec" id="tab-stats">
+      <h3><i class="fas fa-edit"></i>तथ्याङ्क अपडेट</h3>
+      <div class="afg"><label>कुल सदस्य</label><input type="number" id="stm"></div>
+      <div class="afg"><label>वर्षको अनुभव</label><input type="number" id="sty"></div>
+      <div class="afg"><label>कर्जा वितरण (लाखमा)</label><input type="number" id="stl"></div>
+      <button class="asvb" onclick="saveStats()"><i class="fas fa-save"></i>सेभ गर्नुहोस्</button>
+      <div class="asc" id="stsc"><i class="fas fa-check-circle"></i>अपडेट भयो!</div>
+    </div>
+    <div class="asec" id="tab-settings">
+      <h3><i class="fas fa-key"></i>पासवर्ड परिवर्तन</h3>
+      <div class="afg"><label>पुरानो पासवर्ड</label><input type="password" id="op"></div>
+      <div class="afg"><label>नयाँ पासवर्ड</label><input type="password" id="np"></div>
+      <div class="afg"><label>पुष्टि</label><input type="password" id="cp2"></div>
+      <button class="asvb" onclick="chPass()"><i class="fas fa-key"></i>परिवर्तन गर्नुहोस्</button>
+      <div class="asc" id="psc"><i class="fas fa-check-circle"></i>परिवर्तन भयो!</div>
+      <div class="adv"></div>
+      <button class="asvb red" onclick="clrAll()"><i class="fas fa-trash"></i>सबै डेटा रिसेट</button>
+      <div class="adv"></div>
+      <button class="asvb gray" onclick="aLogout()"><i class="fas fa-sign-out-alt"></i>Logout</button>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="tmsg"></span></div>
+<script>
+var DS=[{id:1,name:'रामदेनी प्रसाद',position:'प्रबन्धक',phone:'9796250893',email:'',photo:''},{id:2,name:'अनिता कुमारी',position:'सहायक प्रबन्धक',phone:'9580920805',email:'amitasahani609@gmail.com',photo:''},{id:3,name:'रञ्जित बेठा',position:'लेखाक',phone:'9748335292',email:'ranjitraajak9898@gmail.com',photo:''},{id:4,name:'रञ्जु कुमारी साहँ',position:'स्थानीय प्रतिनिधि',phone:'9580989858',email:'ranjusamridhi@gmail.com',photo:''}];
+var DN=[{id:1,title:'वार्षिक साधारण सभाको सूचना',body:'मिति २०८१ असार ३० गते बिहान १० बजे वार्षिक साधारण सभा हुने।',type:'urgent',date:'२०८१ असार १५'},{id:2,title:'कृषि कर्जामा विशेष छुट',body:'असार महिनामा कृषि कर्जामा आवेदन गर्नेहरूलाई विशेष छुट।',type:'normal',date:'२०८१ जेठ २०'},{id:3,title:'नयाँ सदस्यका लागि विशेष अफर',body:'नयाँ सदस्यहरूलाई पहिलो ३ महिना थप ब्याज।',type:'normal',date:'२०८१ बैशाख ५'}];
+var DG=[{id:1,url:'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=600',caption:'कृषि कार्यक्रम'},{id:2,url:'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=600',caption:'किसान प्रशिक्षण'},{id:3,url:'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600',caption:'खेत भ्रमण'},{id:4,url:'https://images.unsplash.com/photo-1586771107445-d3ca888129ff?w=600',caption:'सदस्य भेला'},{id:5,url:'https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600',caption:'कृषि मेला'},{id:6,url:'https://images.unsplash.com/photo-1560493676-04071c5f467b?w=600',caption:'बाली निरीक्षण'}];
+var LG='ne';
+function gl(k,d){try{var v=localStorage.getItem('sf_'+k);return v?JSON.parse(v):d;}catch(e){return d;}}
+function sl(k,v){try{localStorage.setItem('sf_'+k,JSON.stringify(v));}catch(e){}}
+function toggleLang(){LG=LG==='ne'?'en':'ne';document.body.className='lang-'+LG;document.getElementById('ltog').textContent=LG==='ne'?'EN':'NE';}
+function toggleMnav(){document.getElementById('mnav').classList.toggle('open');document.getElementById('hbg').classList.toggle('open');}
+function closeMnav(){document.getElementById('mnav').classList.remove('open');document.getElementById('hbg').classList.remove('open');}
+function openAdmin(){document.getElementById('ap').classList.add('open');document.getElementById('ao').style.display='block';document.body.style.overflow='hidden';}
+function closeAdmin(){document.getElementById('ap').classList.remove('open');document.getElementById('ao').style.display='none';document.body.style.overflow='';}
+function aLogin(){var p=document.getElementById('apw').value;var pw=gl('pw','sfacl2060');if(p===pw){document.getElementById('alogs').style.display='none';document.getElementById('acont').classList.add('vis');document.getElementById('aerr').style.display='none';ldLists();ldSta();}else{document.getElementById('aerr').style.display='block';document.getElementById('apw').style.borderColor='#e53935';setTimeout(function(){document.getElementById('apw').style.borderColor='#e0e0e0';},2000);}}
+function aLogout(){document.getElementById('alogs').style.display='block';document.getElementById('acont').classList.remove('vis');document.getElementById('apw').value='';closeAdmin();}
+function swTab(n,b){document.querySelectorAll('.asec').forEach(function(s){s.classList.remove('on');});document.querySelectorAll('.at').forEach(function(t){t.classList.remove('on');});document.getElementById('tab-'+n).classList.add('on');b.classList.add('on');}
+function showS(id){var e=document.getElementById(id);e.style.display='flex';setTimeout(function(){e.style.display='none';},2500);}
+function toast(msg,err){var t=document.getElementById('toast');document.getElementById('tmsg').textContent=msg;t.className='toast'+(err?' err':'');t.classList.add('show');setTimeout(function(){t.classList.remove('show');},3500);}
+function mkParts(){var c=document.getElementById('parts');for(var i=0;i<14;i++){var p=document.createElement('div');p.className='part';var s=Math.random()44+8;var colors=['rgba(249,168,37,0.1)','rgba(255,255,255,0.05)','rgba(76,175,80,0.08)'];p.style.cssText='width:'+s+'px;height:'+s+'px;left:'+Math.random()*100+'%;background:'+colors[Math.floor(Math.random()*colors.length)]+';animation-duration:'+(Math.random()*16+8)+'s;animation-delay:'+(Math.random()-22)+'s;';c.appendChild(p);}}
+function cntUp(el,t){var s=0;var sp=t/80;var tm=setInterval(function(){s+=sp;if(s>=t){el.textContent=t;clearInterval(tm);}else{el.textContent=Math.floor(s);}},20);}
+var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');e.target.querySelectorAll('.count').forEach(function(c){cntUp(c,parseInt(c.dataset.target));});obs.unobserve(e.target);}});},{threshold:0.12});
+function rTeam(){var ST=gl('st',DS);var g=document.getElementById('tg');if(!ST.length){g.innerHTML='<p style="text-align:center;color:var(--tl);grid-column:1/-1;padding:40px">कुनै कर्मचारी छैन।</p>';return;}g.innerHTML=ST.map(function(s){return '<div class="tc rv"><div class="tph">'+(s.photo?'<img src="'+s.photo+'" alt="'+s.name+'" onerror="this.style.display=\'none\'">':'')+'<i class="fas fa-user-circle" '+(s.photo?'style="display:none"':'')+'></i></div><div class="tin"><div class="tn">'+s.name+'</div><div class="tpos">'+s.position+'</div><div class="tcts">'+(s.phone?'<a href="tel:'+s.phone+'" class="tcl"><i class="fas fa-phone"></i>'+s.phone+'</a>':'')+(s.email?'<a href="mailto:'+s.email+'" class="tcl" style="font-size:11px"><i class="fas fa-envelope"></i>'+s.email+'</a>':'')+'</div></div></div>';}).join('');g.querySelectorAll('.rv').forEach(function(el){obs.observe(el);});}
+function rNotice(){var NO=gl('no',DN);var g=document.getElementById('ng');if(!NO.length){g.innerHTML='<p style="text-align:center;color:var(--tl);grid-column:1/-1;padding:40px">कुनै सूचना छैन।</p>';return;}g.innerHTML=NO.map(function(n){return '<div class="nc '+(n.type==='urgent'?'urg':'')+' rv"><span class="nbdg '+(n.type==='urgent'?'ub':'nw')+'">'+(n.type==='urgent'?'🔴 जरुरी':'🟢 नयाँ')+'</span><div class="ndt"><i class="fas fa-calendar-alt"></i> '+n.date+'</div><div class="ntl">'+n.title+'</div><div class="nbd">'+n.body+'</div></div>';}).join('');g.querySelectorAll('.rv').forEach(function(el){obs.observe(el);});}
+function rGallery(){var GA=gl('ga',DG);var g=document.getElementById('gg');if(!GA.length){g.innerHTML='<p style="text-align:center;color:var(--tl);grid-column:1/-1;padding:40px">Admin बाट फोटो थप्नुहोस्</p>';return;}g.innerHTML=GA.map(function(i){return '<div class="gi rv" onclick="openLb(\''+i.url+'\')"><img src="'+i.url+'" alt="'+i.caption+'" loading="lazy"><div class="gov"><i class="fas fa-expand-arrows-alt"></i><span>'+i.caption+'</span></div></div>';}).join('');g.querySelectorAll('.rv').forEach(function(el){obs.observe(el);});}
+function openLb(s){document.getElementById('lbi').src=s;document.getElementById('lb').classList.add('on');document.body.style.overflow='hidden';}
+function closeLb(){document.getElementById('lb').classList.remove('on');document.body.style.overflow='';}
+function addStaff(){var n=document.getElementById('sn').value.trim(),p=document.getElementById('sp').value.trim();if(!n||!p){toast('नाम र पद अनिवार्य!',1);return;}var ST=gl('st',DS);ST.push({id:Date.now(),name:n,position:p,phone:document.getElementById('sph').value.trim(),email:document.getElementById('sem').value.trim(),photo:document.getElementById('spt').value.trim()});sl('st',ST);['sn','sp','sph','sem','spt'].forEach(function(i){document.getElementById(i).value='';});showS('ssc');ldLists();rTeam();toast('कर्मचारी थपियो!');}
+function delStaff(id){if(!confirm('मेटाउने?'))return;var ST=gl('st',DS);ST=ST.filter(function(s){return s.id!==id;});sl('st',ST);ldLists();rTeam();toast('मेटाइयो!');}
+function addNotice(){var t=document.getElementById('nt').value.trim();if(!t){toast('शीर्षक अनिवार्य!',1);return;}var NO=gl('no',DN);NO.unshift({id:Date.now(),title:t,body:document.getElementById('nb2').value.trim(),type:document.getElementById('ntp').value,date:new Date().toLocaleDateString('ne-NP',{year:'numeric',month:'long',day:'numeric'})});sl('no',NO);document.getElementById('nt').value='';document.getElementById('nb2').value='';showS('nsc');ldLists();rNotice();toast('सूचना थपियो!');}
+function delNotice(id){if(!confirm('मेटाउने?'))return;var NO=gl('no',DN);NO=NO.filter(function(n){return n.id!==id;});sl('no',NO);ldLists();rNotice();toast('मेटाइयो!');}
+function addGallery(){var u=document.getElementById('gu').value.trim();if(!u){toast('URL अनिवार्य!',1);return;}var GA=gl('ga',DG);GA.push({id:Date.now(),url:u,caption:document.getElementById('gc').value.trim()||'SFACL'});sl('ga',GA);document.getElementById('gu').value='';document.getElementById('gc').value='';showS('gsc');ldLists();rGallery();toast('फोटो थपियो!');}
+function delGallery(id){if(!confirm('मेटाउने?'))return;var GA=gl('ga',DG);GA=GA.filter(function(g){return g.id!==id;});sl('ga',GA);ldLists();rGallery();toast('मेटाइयो!');}
+function ldSta(){var s=gl('sta',{m:500,y:25,l:50});document.getElementById('stm').value=s.m;document.getElementById('sty').value=s.y;document.getElementById('stl').value=s.l;}
+function saveStats(){var s={m:parseInt(document.getElementById('stm').value)||500,y:parseInt(document.getElementById('sty').value)||25,l:parseInt(document.getElementById('stl').value)||50};sl('sta',s);showS('stsc');toast('तथ्याङ्क अपडेट भयो!');}
+function chPass(){var o=document.getElementById('op').value,n=document.getElementById('np').value,c=document.getElementById('cp2').value;var pw=gl('pw','sfacl2060');if(o!==pw){toast('पुरानो पासवर्ड गलत!',1);return;}if(n!==c){toast('पासवर्ड मेल खाएन!',1);return;}if(n.length<6){toast('कम्तिमा ६ अक्षर!',1);return;}sl('pw',n);['op','np','cp2'].forEach(function(i){document.getElementById(i).value='';});showS('psc');toast('पासवर्ड परिवर्तन भयो!');}
+function clrAll(){if(!confirm('सबै डेटा मेटाउने?'))return;['sf_st','sf_no','sf_ga','sf_sta'].forEach(function(k){localStorage.removeItem(k);});ldLists();rTeam();rNotice();rGallery();toast('रिसेट भयो!');}
+function ldLists(){var ST=gl('st',DS);document.getElementById('asl').innerHTML=ST.length?ST.map(function(s){return '<div class="ali"><div class="ali-i"><strong>'+s.name+'</strong><span>'+s.position+(s.phone?' - '+s.phone:'')+'</span></div><div class="ali-a"><button class="aab d" onclick="delStaff('+s.id+')"><i class="fas fa-trash"></i></button></div></div>';}).join(''):'<p style="font-size:12px;color:var(--tl);text-align:center;padding:12px">खाली छ</p>';var NO=gl('no',DN);document.getElementById('anl').innerHTML=NO.length?NO.map(function(n){return '<div class="ali"><div class="ali-i"><strong>'+n.title+'</strong><span>'+n.date+'</span></div><div class="ali-a"><button class="aab d" onclick="delNotice('+n.id+')"><i class="fas fa-trash"></i></button></div></div>';}).join(''):'<p style="font-size:12px;color:var(--tl);text-align:center;padding:12px">खाली छ</p>';var GA=gl('ga',DG);document.getElementById('agl').innerHTML=GA.length?GA.map(function(g){return '<div class="ali"><div class="ali-i"><strong>'+g.caption+'</strong></div><div class="ali-a"><button class="aab d" onclick="delGallery('+g.id+')"><i class="fas fa-trash"></i></button></div></div>';}).join(''):'<p style="font-size:12px;color:var(--tl);text-align:center;padding:12px">खाली छ</p>';}
+function subMem(){var n=document.getElementById('mn').value.trim(),p=document.getElementById('mp').value.trim();if(!n||!p){toast('नाम र फोन अनिवार्य!',1);return;}toast('✅ आवेदन पठाइयो! हामी सम्पर्क गर्नेछौं।');['mn','mp','ma','mm'].forEach(function(i){document.getElementById(i).value='';});}
+function subCon(){var n=document.getElementById('cn').value.trim();if(!n){toast('नाम अनिवार्य!',1);return;}toast('✅ सन्देश पठाइयो! धन्यवाद।');['cn','cp','cm'].forEach(function(i){document.getElementById(i).value='';});}
+window.addEventListener('scroll',function(){var links=document.querySelectorAll('.nls a');var sections=['hero','about','services','loan','membership','team','gallery','notice','contact'];var current='';sections.forEach(function(id){var el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<100){current=id;}});links.forEach(function(a){a.classList.remove('active');if(a.getAttribute('href')==='#'+current){a.classList.add('active');}});document.getElementById('nb').style.boxShadow=window.scrollY>50?'0 4px 24px rgba(0,0,0,0.14)':'0 2px 30px rgba(0,0,0,0.1)';});
+document.addEventListener('keydown',function(e){if(e.key==='Enter'&&document.activeElement===document.getElementById('apw'))aLogin();if(e.key==='Escape'){closeAdmin();closeLb();closeMnav();}});
+document.addEventListener('DOMContentLoaded',function(){mkParts();rTeam();rNotice();rGallery();document.querySelectorAll('.rv').forEach(function(el){obs.observe(el);});});
+</script>
+</body>
+</html>
+
+
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+var btn=document.querySelector('.abtn');
+if(btn){btn.addEventListener('click',function(){
+var ap=document.getElementById('ap');
+var ao=document.getElementById('ao');
+ap.style.cssText='position:fixed;top:0;right:0;bottom:0;width:min(500px,100vw);z-index:9001;background:white;overflow-y:auto;box-shadow:-10px 0 50px rgba(0,0,0,0.3);display:block';
+ao.style.cssText='display:block;position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,0.5)';
+document.body.style.overflow='hidden';
+});}
+var ao=document.getElementById('ao');
+if(ao){ao.addEventListener('click',function(){
+document.getElementById('ap').style.right='-100%';
+ao.style.display='none';
+document.body.style.overflow='';
+});}
+var apc=document.querySelector('.apc');
+if(apc){apc.addEventListener('click',function(){
+document.getElementById('ap').style.right='-100%';
+document.getElementById('ao').style.display='none';
+document.body.style.overflow='';
+});}
+var pw=document.getElementById('apw');
+if(pw){pw.addEventListener('keydown',function(e){if(e.key==='Enter')aLogin();});}
+rTeam();rNotice();rGallery();
+document.querySelectorAll('.rv').forEach(function(el){el.classList.add('vis');});
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  try{
+    var def={agri:{rate:'११%',period:'१ वर्ष'},live:{rate:'१२%',period:'२ वर्ष'},home:{rate:'१३%',period:'५ वर्ष'},biz:{rate:'१३.५%',period:'३ वर्ष'}};
+    var v=localStorage.getItem('sf_rates');
+    var r=v?JSON.parse(v):def;
+    var cells=document.querySelectorAll('.rh');
+    if(cells[0])cells[0].textContent=r.agri.rate;
+    if(cells[1])cells[1].textContent=r.live.rate;
+    if(cells[2])cells[2].textContent=r.home.rate;
+    if(cells[3])cells[3].textContent=r.biz.rate;
+  }catch(e){}
+});
+</script>
+
+
+
+<script>
+window.addEventListener('load',function(){
+  setTimeout(function(){
+    document.querySelectorAll('.count').forEach(function(c){
+      var target=parseInt(c.dataset.target)||0;
+      var current=0;
+      var step=target/60;
+      var timer=setInterval(function(){
+        current+=step;
+        if(current>=target){c.textContent=target;clearInterval(timer);}
+        else{c.textContent=Math.floor(current);}
+      },25);
+    });
+  },500);
+});
+</script>
+
+<style>
+.nls{position:relative}
+.nls a{text-decoration:none;color:#222;font-size:13px;font-weight:600;padding:8px 18px;border-radius:100px;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);font-family:"Tiro Devanagari Nepali",serif;position:relative;letter-spacing:0.3px;white-space:nowrap;overflow:hidden}.nls a::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,92,26,0.08),rgba(249,168,37,0.06));border-radius:100px;transform:scale(0);transition:transform 0.4s cubic-bezier(0.4,0,0.2,1);z-index:-1}.nls a::after{content:"";position:absolute;bottom:2px;left:50%;width:0;height:2px;background:linear-gradient(90deg,#1a5c1a,#f9a825,#1a5c1a);border-radius:2px;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);transform:translateX(-50%)}.nls a:hover{color:#1a5c1a;transform:translateY(-2px)}.nls a:hover::before{transform:scale(1)}.nls a:hover::after{width:calc(100% - 24px)}.nls a.active{color:#1a5c1a;font-weight:700}.nls a.active::before{transform:scale(1)}.nls a.active::after{width:calc(100% - 24px)}
+.nls a::before{content:'';position:absolute;bottom:-2px;left:50%;width:0;height:2.5px;background:linear-gradient(90deg,#1a5c1a,#f9a825,#1a5c1a);border-radius:2px;transition:all 0.35s cubic-bezier(0.4,0,0.2,1);transform:translateX(-50%)}
+.nls a:hover{color:#1a5c1a;background:linear-gradient(135deg,rgba(26,92,26,0.07),rgba(249,168,37,0.04));transform:translateY(-1px)}
+.nls a:hover::before{width:calc(100% - 20px)}
+.nls a.active{color:#1a5c1a;background:linear-gradient(135deg,rgba(26,92,26,0.1),rgba(249,168,37,0.06))}
+.nls a.active::before{width:calc(100% - 20px)}
+.lbtn{background:linear-gradient(135deg,#1a5c1a,#2e7d32);color:white;border:none;border-radius:100px;padding:8px 20px;font-size:12.5px;font-weight:700;cursor:pointer;transition:all 0.3s cubic-bezier(0.4,0,0.2,1);letter-spacing:0.5px;box-shadow:0 2px 12px rgba(26,92,26,0.25)}
+.lbtn:hover{background:linear-gradient(135deg,#f9a825,#e65100);color:#1a5c1a;transform:translateY(-2px);box-shadow:0 6px 20px rgba(249,168,37,0.4)}
+.abtn{background:transparent;border:1.5px solid rgba(26,92,26,0.4);color:#1a5c1a;border-radius:100px;padding:8px 16px;font-size:12px;cursor:pointer;transition:all 0.3s cubic-bezier(0.4,0,0.2,1);font-weight:700;display:flex;align-items:center;gap:6px}
+.abtn:hover{background:#1a5c1a;color:white;border-color:#1a5c1a;transform:translateY(-2px);box-shadow:0 6px 20px rgba(26,92,26,0.3)}
+.ni{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:10px 24px;gap:16px}
+</style>
+<style>
+#nb{background:rgba(255,255,255,0.92)!important;backdrop-filter:blur(20px) saturate(200%)!important;-webkit-backdrop-filter:blur(20px) saturate(200%)!important;border-bottom:none!important;box-shadow:0 1px 40px rgba(0,0,0,0.08)!important}
+.nls a::before{display:none!important}
+.nls a::after{content:'';position:absolute;bottom:-2px;left:50%;width:0;height:2.5px;background:linear-gradient(90deg,#1a5c1a,#f9a825);border-radius:2px;transition:all 0.35s ease;transform:translateX(-50%)}
+.nls a:hover::after{width:80%}
+.nls a.active::after{width:80%}
+#nb::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(249,168,37,0.5),transparent)}
+</style>
+<style>
+.hero-farmer{position:absolute;bottom:60px;left:0;right:0;display:flex;justify-content:space-around;pointer-events:none;z-index:1;opacity:0.15}
+.farmer-icon{font-size:48px;animation:farmerWalk 3s ease-in-out infinite}
+.farmer-icon:nth-child(2){animation-delay:0.5s}
+.farmer-icon:nth-child(3){animation-delay:1s}
+@keyframes farmerWalk{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-10px) scale(1.05)}}
+</style>
+
+
+
