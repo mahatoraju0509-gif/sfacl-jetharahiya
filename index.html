@@ -394,7 +394,7 @@ footer{background:linear-gradient(160deg,#020a02,#0a1f0a,#1a3a1a);color:rgba(255
     <div class="nr">
       
       <button class="abtn" onclick="window.location.href='admin.html'"><i class="fas fa-lock"></i> Admin</button>
-      <div class="hbg" id="hbg" onclick="toggleMnav()"><span></span><span></span><span></span></div>
+      <div class="hbg" id="hbg" onclick="(function(){var m=document.getElementById('mnav');var h=document.getElementById('hbg');if(m){m.classList.toggle('open');if(h)h.classList.toggle('open');}})()"><span></span><span></span><span></span></div>
     </div>
   </div>
 </nav>
@@ -477,7 +477,7 @@ footer{background:linear-gradient(160deg,#020a02,#0a1f0a,#1a3a1a);color:rgba(255
     <div class="nr">
       
       <button class="abtn" onclick="window.location.href='admin.html'"><i class="fas fa-lock"></i> Admin</button>
-      <div class="hbg" id="hbg" onclick="toggleMnav()"><span></span><span></span><span></span></div>
+      <div class="hbg" id="hbg" onclick="(function(){var m=document.getElementById('mnav');var h=document.getElementById('hbg');if(m){m.classList.toggle('open');if(h)h.classList.toggle('open');}})()"><span></span><span></span><span></span></div>
     </div>
   </div>
 </nav>
@@ -831,7 +831,7 @@ var LG='ne';
 function gl(k,d){try{var v=localStorage.getItem('sf_'+k);return v?JSON.parse(v):d;}catch(e){return d;}}
 function sl(k,v){try{localStorage.setItem('sf_'+k,JSON.stringify(v));}catch(e){}}
 function toggleLang(){LG=LG==='ne'?'en':'ne';document.body.className='lang-'+LG;document.getElementById('ltog').textContent=LG==='ne'?'EN':'NE';}
-function toggleMnav(){document.getElementById('mnav').classList.toggle('open');document.getElementById('hbg').classList.toggle('open');}
+function toggleMnav(){var m=document.getElementById("mnav");var h=document.getElementById("hbg");if(m){m.classList.toggle("open");}if(h){h.classList.toggle("open");}}
 function closeMnav(){document.getElementById('mnav').classList.remove('open');document.getElementById('hbg').classList.remove('open');}
 function openAdmin(){document.getElementById('ap').classList.add('open');document.getElementById('ao').style.display='block';document.body.style.overflow='hidden';}
 function closeAdmin(){document.getElementById('ap').classList.remove('open');document.getElementById('ao').style.display='none';document.body.style.overflow='';}
@@ -2124,6 +2124,8 @@ window.fbGetDownloadURL=getDownloadURL;
 window.fbRef=ref;
 window.fbUploadBytes=uploadBytes;
 </script>
+
+
 
 
 
