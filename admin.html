@@ -139,7 +139,7 @@ body{font-family:'Poppins',sans-serif;background:#f0f4f0;min-height:100vh}
           <div class="fg"><label>Email</label><input type="email" id="sem" placeholder="email@example.com"></div>
         </div>
         <div class="fg"><label>फोटो Upload (Phone बाट)</label><input type="file" id="s-photo-file" accept="image/*" style="border:1.5px solid #e8e8e8;border-radius:10px;padding:10px;width:100%"></div><div class="fg"><label>वा Photo URL</label><input type="url" id="spt" placeholder="https://i.ibb.co/..."></div>
-        <button class="save-btn full" onclick="window.fbAddStaffAction&&window.fbAddStaffAction()"><i class="fas fa-plus"></i> कर्मचारी थप्नुहोस्</button>
+        <button class="save-btn full" onclick="fbAddStaffAction()"><i class="fas fa-plus"></i> कर्मचारी थप्नुहोस्</button>
         <div class="success-msg" id="ssc"><i class="fas fa-check-circle"></i> सफलतापूर्वक थपियो!</div>
       </div>
       <div class="list-card">
@@ -155,7 +155,7 @@ body{font-family:'Poppins',sans-serif;background:#f0f4f0;min-height:100vh}
         <div class="fg"><label>शीर्षक *</label><input type="text" id="nt" placeholder="सूचनाको शीर्षक"></div>
         <div class="fg"><label>विवरण</label><textarea id="nb" placeholder="सूचनाको विवरण..."></textarea></div>
         <div class="fg"><label>प्रकार</label><select id="ntp"><option value="normal">🟢 साधारण</option><option value="urgent">🔴 जरुरी</option></select></div>
-        <button class="save-btn full" onclick="window.fbAddNoticeAction&&window.fbAddNoticeAction()"><i class="fas fa-plus"></i> सूचना थप्नुहोस्</button>
+        <button class="save-btn full" onclick="fbAddNoticeAction()"><i class="fas fa-plus"></i> सूचना थप्नुहोस्</button>
         <div class="success-msg" id="nsc"><i class="fas fa-check-circle"></i> सूचना थपियो!</div>
       </div>
       <div class="list-card">
@@ -171,7 +171,7 @@ body{font-family:'Poppins',sans-serif;background:#f0f4f0;min-height:100vh}
         <p style="font-size:12px;color:#777;margin-bottom:16px">💡 imgbb.com मा photo upload गरेर Direct Link copy गर्नुस्</p>
         <div class="fg"><label>फोटो URL *</label><input type="url" id="gu" placeholder="https://i.ibb.co/..."></div>
         <div class="fg"><label>Caption / विवरण</label><input type="text" id="gc" placeholder="फोटोको विवरण"></div>
-        <button class="save-btn full" onclick="window.fbAddGalleryAction&&window.fbAddGalleryAction()"><i class="fas fa-plus"></i> फोटो थप्नुहोस्</button>
+        <button class="save-btn full" onclick="fbAddGalleryAction()"><i class="fas fa-plus"></i> फोटो थप्नुहोस्</button>
         <div class="success-msg" id="gsc"><i class="fas fa-check-circle"></i> फोटो थपियो!</div>
       </div>
       <div class="list-card">
@@ -216,7 +216,7 @@ body{font-family:'Poppins',sans-serif;background:#f0f4f0;min-height:100vh}
           <div class="fg"><label>वर्षको अनुभव</label><input type="number" id="sty" placeholder="25"></div>
         </div>
         <div class="fg"><label>कर्जा वितरण (लाखमा)</label><input type="number" id="stl" placeholder="50"></div>
-        <button class="save-btn full" onclick="window.fbSaveStatsAction&&window.fbSaveStatsAction()"><i class="fas fa-save"></i> तथ्याङ्क सेभ गर्नुहोस्</button>
+        <button class="save-btn full" onclick="fbSaveStatsAction()"><i class="fas fa-save"></i> तथ्याङ्क सेभ गर्नुहोस्</button>
         <div class="success-msg" id="stsc"><i class="fas fa-check-circle"></i> अपडेट भयो!</div>
       </div>
     </div>
@@ -418,7 +418,7 @@ function editStaff(id){
   document.getElementById('sph').value=s.phone||'';
   document.getElementById('sem').value=s.email||'';
   document.getElementById('spt').value=s.photo||'';
-  var btn=document.querySelector('[onclick="window.fbAddStaffAction&&window.fbAddStaffAction()"]');
+  var btn=document.querySelector('[onclick="fbAddStaffAction()"]');
   btn.innerHTML='<i class="fas fa-save"></i> अपडेट गर्नुहोस्';
   btn.onclick=function(){updateStaff(id);};
   window.scrollTo({top:0,behavior:'smooth'});
@@ -442,7 +442,7 @@ function editNotice(id){
   document.getElementById('nt').value=n.title;
   document.getElementById('nb').value=n.body||'';
   document.getElementById('ntp').value=n.type||'normal';
-  var btn=document.querySelector('[onclick="window.fbAddNoticeAction&&window.fbAddNoticeAction()"]');
+  var btn=document.querySelector('[onclick="fbAddNoticeAction()"]');
   btn.innerHTML='<i class="fas fa-save"></i> अपडेट गर्नुहोस्';
   btn.onclick=function(){updateNotice(id);};
   window.scrollTo({top:0,behavior:'smooth'});
@@ -465,7 +465,7 @@ function editGallery(id){
   if(!g)return;
   document.getElementById('gu').value=g.url;
   document.getElementById('gc').value=g.caption||'';
-  var btn=document.querySelector('[onclick="window.fbAddGalleryAction&&window.fbAddGalleryAction()"]');
+  var btn=document.querySelector('[onclick="fbAddGalleryAction()"]');
   btn.innerHTML='<i class="fas fa-save"></i> अपडेट गर्नुहोस्';
   btn.onclick=function(){updateGallery(id);};
   window.scrollTo({top:0,behavior:'smooth'});
@@ -516,7 +516,7 @@ renderGallery=function(){
 </script>
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
-import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc, setDoc, updateDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
+import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc, setDoc, updateDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/12.15.0/firestore.js";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-storage.js";
 
 const firebaseConfig = {
@@ -650,7 +650,7 @@ window.fbEditStaff = function(id,data){
   document.getElementById('sph').value=data.phone||'';
   document.getElementById('sem').value=data.email||'';
   document.getElementById('spt').value=data.photo||'';
-  var btn=document.querySelector('[onclick="window.fbAddStaffAction&&window.fbAddStaffAction()"]');
+  var btn=document.querySelector('[onclick="fbAddStaffAction()"]');
   if(btn){btn.innerHTML='<i class="fas fa-save"></i> अपडेट';btn.onclick=async function(){
     var photoUrl=data.photo;
     var photoFile=document.getElementById('s-photo-file');
@@ -681,7 +681,7 @@ window.fbEditNotice = function(id,title,body,type){
   document.getElementById('nt').value=title;
   document.getElementById('nb').value=body;
   document.getElementById('ntp').value=type;
-  var btn=document.querySelector('[onclick="window.fbAddNoticeAction&&window.fbAddNoticeAction()"]');
+  var btn=document.querySelector('[onclick="fbAddNoticeAction()"]');
   if(btn){btn.innerHTML='<i class="fas fa-save"></i> अपडेट';btn.onclick=async function(){
     await window.fbUpdateNotice(id,{title:document.getElementById('nt').value,body:document.getElementById('nb').value,type:document.getElementById('ntp').value});
     btn.innerHTML='<i class="fas fa-plus"></i> थप्नुहोस्';btn.onclick=window.fbAddNoticeAction;
@@ -731,7 +731,5 @@ window.doLogin=function(){
   }
 };
 </script>
-
-
 
 
