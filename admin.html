@@ -100,7 +100,7 @@ body{font-family:'Poppins',sans-serif;background:#f0f4f0;min-height:100vh}
       <p>अधिकृत कर्मचारीका लागि मात्र</p>
       <input type="text" class="login-input" placeholder="Username" id="lu" value="admin">
       <input type="password" class="login-input" placeholder="Password" id="lp">
-      <p style="font-size:11px;color:#999;margin-bottom:12px">Default: sfacl2060</p>
+      
       <button class="login-btn" onclick="doLogin()"><i class="fas fa-sign-in-alt"></i> Login</button>
       <p class="login-err" id="lerr">❌ गलत पासवर्ड!</p>
     </div>
@@ -406,4 +406,111 @@ function loadHeroInfo(){
     document.getElementById('h-badge-ne').value=d.badgeNe||'स्थापना २०६० • जेठरहिया, रौतहट, मधेश प्रदेश';
   }
 }
+</script>
+
+<script>
+function editStaff(id){
+  var ST=JSON.parse(localStorage.getItem('sf_st')||'[]');
+  var s=ST.find(function(x){return x.id===id;});
+  if(!s)return;
+  document.getElementById('sn').value=s.name;
+  document.getElementById('sp').value=s.position;
+  document.getElementById('sph').value=s.phone||'';
+  document.getElementById('sem').value=s.email||'';
+  document.getElementById('spt').value=s.photo||'';
+  var btn=document.querySelector('[onclick="addStaff()"]');
+  btn.innerHTML='<i class="fas fa-save"></i> अपडेट गर्नुहोस्';
+  btn.onclick=function(){updateStaff(id);};
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function updateStaff(id){
+  var ST=JSON.parse(localStorage.getItem('sf_st')||'[]');
+  var idx=ST.findIndex(function(x){return x.id===id;});
+  if(idx>-1){
+    ST[idx]={id:id,name:document.getElementById('sn').value.trim(),position:document.getElementById('sp').value.trim(),phone:document.getElementById('sph').value.trim(),email:document.getElementById('sem').value.trim(),photo:document.getElementById('spt').value.trim()};
+    localStorage.setItem('sf_st',JSON.stringify(ST));
+  }
+  ['sn','sp','sph','sem','spt'].forEach(function(i){document.getElementById(i).value='';});
+  var btn=document.querySelector('[onclick*="updateStaff"]');
+  if(btn){btn.innerHTML='<i class="fas fa-plus"></i> कर्मचारी थप्नुहोस्';btn.onclick=addStaff;}
+  showS('ssc');renderStaff();toast('कर्मचारी अपडेट भयो!');
+}
+function editNotice(id){
+  var NO=JSON.parse(localStorage.getItem('sf_no')||'[]');
+  var n=NO.find(function(x){return x.id===id;});
+  if(!n)return;
+  document.getElementById('nt').value=n.title;
+  document.getElementById('nb').value=n.body||'';
+  document.getElementById('ntp').value=n.type||'normal';
+  var btn=document.querySelector('[onclick="addNotice()"]');
+  btn.innerHTML='<i class="fas fa-save"></i> अपडेट गर्नुहोस्';
+  btn.onclick=function(){updateNotice(id);};
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function updateNotice(id){
+  var NO=JSON.parse(localStorage.getItem('sf_no')||'[]');
+  var idx=NO.findIndex(function(x){return x.id===id;});
+  if(idx>-1){
+    NO[idx]={id:id,title:document.getElementById('nt').value.trim(),body:document.getElementById('nb').value.trim(),type:document.getElementById('ntp').value,date:NO[idx].date};
+    localStorage.setItem('sf_no',JSON.stringify(NO));
+  }
+  document.getElementById('nt').value='';document.getElementById('nb').value='';
+  var btn=document.querySelector('[onclick*="updateNotice"]');
+  if(btn){btn.innerHTML='<i class="fas fa-plus"></i> थप्नुहोस्';btn.onclick=addNotice;}
+  showS('nsc');renderNotice();toast('सूचना अपडेट भयो!');
+}
+function editGallery(id){
+  var GA=JSON.parse(localStorage.getItem('sf_ga')||'[]');
+  var g=GA.find(function(x){return x.id===id;});
+  if(!g)return;
+  document.getElementById('gu').value=g.url;
+  document.getElementById('gc').value=g.caption||'';
+  var btn=document.querySelector('[onclick="addGallery()"]');
+  btn.innerHTML='<i class="fas fa-save"></i> अपडेट गर्नुहोस्';
+  btn.onclick=function(){updateGallery(id);};
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function updateGallery(id){
+  var GA=JSON.parse(localStorage.getItem('sf_ga')||'[]');
+  var idx=GA.findIndex(function(x){return x.id===id;});
+  if(idx>-1){
+    GA[idx]={id:id,url:document.getElementById('gu').value.trim(),caption:document.getElementById('gc').value.trim()||'SFACL'};
+    localStorage.setItem('sf_ga',JSON.stringify(GA));
+  }
+  document.getElementById('gu').value='';document.getElementById('gc').value='';
+  var btn=document.querySelector('[onclick*="updateGallery"]');
+  if(btn){btn.innerHTML='<i class="fas fa-plus"></i> थप्नुहोस्';btn.onclick=addGallery;}
+  showS('gsc');renderGallery();toast('फोटो अपडेट भयो!');
+}
+
+// Override render functions to add edit buttons
+var _renderStaff=renderStaff;
+renderStaff=function(){
+  var DS=[{id:1,name:'रामदेनी प्रसाद',position:'प्रबन्धक',phone:'9796250893',email:'',photo:''},{id:2,name:'अनिता कुमारी',position:'सहायक प्रबन्धक',phone:'9580920805',email:'amitasahani609@gmail.com',photo:''},{id:3,name:'रञ्जित बेठा',position:'लेखाक',phone:'9748335292',email:'ranjitraajak9898@gmail.com',photo:''},{id:4,name:'रञ्जु कुमारी साहँ',position:'स्थानीय प्रतिनिधि',phone:'9580989858',email:'ranjusamridhi@gmail.com',photo:''}];
+  var ST=JSON.parse(localStorage.getItem('sf_st')||JSON.stringify(DS));
+  document.getElementById('staff-count').textContent=ST.length;
+  var el=document.getElementById('staff-list');
+  if(!ST.length){el.innerHTML='<div class="empty-msg"><i class="fas fa-users"></i>कुनै कर्मचारी छैन</div>';return;}
+  el.innerHTML=ST.map(function(s){return '<div class="list-item"><div class="list-item-info"><strong>'+s.name+'</strong><span>'+s.position+(s.phone?' • '+s.phone:'')+(s.email?' • '+s.email:'')+'</span></div><div class="ali-a" style="display:flex;gap:6px"><button style="background:#e3f2fd;color:#1565c0;border:none;width:32px;height:32px;border-radius:7px;cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center" onclick="editStaff('+s.id+')"><i class="fas fa-edit"></i></button><button class="del-btn" onclick="delStaff('+s.id+')"><i class="fas fa-trash"></i></button></div></div>';}).join('');
+};
+
+var _renderNotice=renderNotice;
+renderNotice=function(){
+  var DN=[{id:1,title:'वार्षिक साधारण सभाको सूचना',body:'मिति २०८१ असार ३० गते।',type:'urgent',date:'२०८१ असार १५'},{id:2,title:'कृषि कर्जामा विशेष छुट',body:'असार महिनामा विशेष छुट।',type:'normal',date:'२०८१ जेठ २०'}];
+  var NO=JSON.parse(localStorage.getItem('sf_no')||JSON.stringify(DN));
+  document.getElementById('notice-count').textContent=NO.length;
+  var el=document.getElementById('notice-list');
+  if(!NO.length){el.innerHTML='<div class="empty-msg"><i class="fas fa-bell"></i>कुनै सूचना छैन</div>';return;}
+  el.innerHTML=NO.map(function(n){return '<div class="list-item"><div class="list-item-info"><strong>'+(n.type==='urgent'?'🔴 ':'')+n.title+'</strong><span>'+n.date+'</span></div><div style="display:flex;gap:6px"><button style="background:#e3f2fd;color:#1565c0;border:none;width:32px;height:32px;border-radius:7px;cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center" onclick="editNotice('+n.id+')"><i class="fas fa-edit"></i></button><button class="del-btn" onclick="delNotice('+n.id+')"><i class="fas fa-trash"></i></button></div></div>';}).join('');
+};
+
+var _renderGallery=renderGallery;
+renderGallery=function(){
+  var DG=[{id:1,url:'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=600',caption:'कृषि कार्यक्रम'}];
+  var GA=JSON.parse(localStorage.getItem('sf_ga')||JSON.stringify(DG));
+  document.getElementById('gallery-count').textContent=GA.length;
+  var el=document.getElementById('gallery-list');
+  if(!GA.length){el.innerHTML='<div class="empty-msg"><i class="fas fa-images"></i>कुनै फोटो छैन</div>';return;}
+  el.innerHTML=GA.map(function(g){return '<div class="list-item"><div class="list-item-info"><strong>'+g.caption+'</strong><span style="font-size:10px">'+g.url.substring(0,40)+'...</span></div><div style="display:flex;gap:6px"><button style="background:#e3f2fd;color:#1565c0;border:none;width:32px;height:32px;border-radius:7px;cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center" onclick="editGallery('+g.id+')"><i class="fas fa-edit"></i></button><button class="del-btn" onclick="delGallery('+g.id+')"><i class="fas fa-trash"></i></button></div></div>';}).join('');
+};
 </script>

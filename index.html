@@ -712,9 +712,25 @@ footer{background:linear-gradient(160deg,#020a02,#0a1f0a,#1a3a1a);color:rgba(255
       </ul>
     </div>
   </div>
-  <div class="fbot">
+  <div style="max-width:1280px;margin:0 auto;padding:32px 20px;border-top:1px solid rgba(255,255,255,0.05);display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+  <img src="developer.jpg" alt="Raju Mahato" style="width:72px;height:72px;border-radius:50%;object-fit:cover;border:3px solid var(--gold);box-shadow:0 0 24px rgba(249,168,37,0.4);flex-shrink:0">
+  <div style="flex:1;min-width:280px">
+    <div style="font-size:16px;font-weight:800;color:white;margin-bottom:4px">Raju Mahato (Digambar)</div>
+    <div style="font-size:12px;color:var(--gold);font-weight:700;margin-bottom:6px;letter-spacing:1px">NEPAL'S #1 INDIVIDUAL DEVELOPER 🇳🇵</div>
+    <div style="font-size:12px;color:rgba(255,255,255,0.6);line-height:1.7">यो website जेठरहियाकै छोरा Raju Mahato (Digambar) ले बनाएका हुन् — जो अहिले Japan मा IT पढ्दै सम्पूर्ण नेपालका लागि digital solutions बनाउँदैछन्।<br><span style="font-size:11px;color:rgba(255,255,255,0.5)">Founder: EduPath AI &amp; Thagi Satark | KCG Kyoto Japan</span></div>
+    <div style="display:flex;gap:10px;margin-top:10px;flex-wrap:wrap">
+      <a href="https://rajumahato.it.com" target="_blank" style="font-size:11px;color:var(--gold);text-decoration:none;background:rgba(249,168,37,0.1);padding:4px 10px;border-radius:20px;border:1px solid rgba(249,168,37,0.3);transition:all 0.3s">🌐 Portfolio</a>
+      <a href="https://www.facebook.com/share/1Ct75pTkeE/?mibextid=wwXIfr" target="_blank" style="font-size:11px;color:var(--gold);text-decoration:none;background:rgba(249,168,37,0.1);padding:4px 10px;border-radius:20px;border:1px solid rgba(249,168,37,0.3)">📘 Facebook</a>
+      <a href="https://wa.me/81909036694264" target="_blank" style="font-size:11px;color:var(--gold);text-decoration:none;background:rgba(249,168,37,0.1);padding:4px 10px;border-radius:20px;border:1px solid rgba(249,168,37,0.3)">💬 WhatsApp</a>
+      <a href="mailto:mahatodigambar0509@gmail.com" style="font-size:11px;color:var(--gold);text-decoration:none;background:rgba(249,168,37,0.1);padding:4px 10px;border-radius:20px;border:1px solid rgba(249,168,37,0.3)">📧 Email</a>
+      <a href="https://edupath-ai.vercel.app" target="_blank" style="font-size:11px;color:var(--gold);text-decoration:none;background:rgba(249,168,37,0.1);padding:4px 10px;border-radius:20px;border:1px solid rgba(249,168,37,0.3)">🎓 EduPath AI</a>
+      <a href="https://thagi-satark.vercel.app" target="_blank" style="font-size:11px;color:var(--gold);text-decoration:none;background:rgba(249,168,37,0.1);padding:4px 10px;border-radius:20px;border:1px solid rgba(249,168,37,0.3)">🛡️ Thagi Satark</a>
+    </div>
+  </div>
+</div>
+<div class="fbot">
     <p>&copy; 2083 SFACL Jetharahiya. <span class="ne">सर्वाधिकार सुरक्षित।</span><span class="en">All rights reserved.</span></p>
-    <div class="dev">
+    <div class="dev" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><img src="developer.jpg" alt="Raju Mahato" style="width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);box-shadow:0 0 12px rgba(249,168,37,0.4)">
       <span class="devb">DEV</span>
       <span>Designed & Developed by</span>
       <a href="https://rajumahato.it.com" target="_blank">Raju Mahato</a>
@@ -1224,9 +1240,9 @@ footer::after{content:''!important;position:absolute!important;inset:0!important
 .fg2{position:relative!important;z-index:1!important}
 .fbn{background:linear-gradient(135deg,white,rgba(255,255,255,0.8))!important;-webkit-background-clip:text!important;-webkit-text-fill-color:transparent!important;background-clip:text!important;font-size:20px!important}
 .fsl{background:rgba(255,255,255,0.05)!important;border:1px solid rgba(255,255,255,0.08)!important;transition:all 0.4s cubic-bezier(0.4,0,0.2,1)!important}
-.fsl:hover{background:linear-gradient(135deg,#f9a825,#e65100)!important;border-color:transparent!important;color:#1a5c1a!important;transform:translateY(-4px) rotate(5deg)!important;box-shadow:0 12px 32px rgba(249,168,37,0.3)!important}
-.fc ul li a:hover{color:#f9a825!important;padding-left:8px!important}
-.fbot{position:relative!important;z-index:1!important;border-top:1px solid rgba(255,255,255,0.05)!important}
+
+
+
 .devb{background:linear-gradient(135deg,#f9a825,#e65100)!important;box-shadow:0 4px 16px rgba(249,168,37,0.3)!important;letter-spacing:0.5px!important}
 .dev a{background:linear-gradient(135deg,#f9a825,#fdd835)!important;-webkit-background-clip:text!important;-webkit-text-fill-color:transparent!important;background-clip:text!important}
 
@@ -1945,5 +1961,88 @@ document.addEventListener('DOMContentLoaded',function(){
   var h=JSON.parse(localStorage.getItem('sf_hero')||'{}');
   if(h.tagNe){var t=document.querySelector('.htag.ne');if(t)t.textContent=h.tagNe;}
   if(h.tagEn){var t=document.querySelector('.htag.en');if(t)t.textContent=h.tagEn;}
+});
+</script>
+
+
+
+
+
+
+<style>
+*{will-change:auto!important}
+.svc,.tc,.mbc,.lc,.nc,.cit{will-change:transform!important}
+img{loading:lazy!important;decoding:async!important}
+#hero{contain:layout style!important}
+.loan-belt-inner{will-change:transform!important}
+</style>
+<script>
+// PERFORMANCE - Lazy load images
+document.addEventListener('DOMContentLoaded',function(){
+  if('IntersectionObserver' in window){
+    var imgObs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          var img=e.target;
+          if(img.dataset.src){img.src=img.dataset.src;imgObs.unobserve(img);}
+        }
+      });
+    });
+    document.querySelectorAll('img[data-src]').forEach(function(img){imgObs.observe(img);});
+  }
+
+  // DISABLE heavy animations on mobile
+  if(window.innerWidth < 768){
+    document.querySelectorAll('.part').forEach(function(p){p.style.display='none';});
+    var canvas=document.querySelector('#hero canvas');
+    if(canvas)canvas.style.display='none';
+  }
+
+  // REDUCE motion for battery saving
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('*').forEach(function(el){
+      el.style.animationDuration='0.01ms';
+      el.style.transitionDuration='0.01ms';
+    });
+  }
+});
+
+// THROTTLE scroll events
+var ticking=false;
+window.addEventListener('scroll',function(){
+  if(!ticking){
+    requestAnimationFrame(function(){ticking=false;});
+    ticking=true;
+  }
+},{passive:true});
+</script>
+<script>
+window.addEventListener('load',function(){
+  var DS=[{id:1,name:'रामदेनी प्रसाद',position:'प्रबन्धक',phone:'9796250893',email:'',photo:''},{id:2,name:'अनिता कुमारी',position:'सहायक प्रबन्धक',phone:'9580920805',email:'amitasahani609@gmail.com',photo:''},{id:3,name:'रञ्जित बेठा',position:'लेखाक',phone:'9748335292',email:'ranjitraajak9898@gmail.com',photo:''},{id:4,name:'रञ्जु कुमारी साहँ',position:'स्थानीय प्रतिनिधि',phone:'9580989858',email:'ranjusamridhi@gmail.com',photo:''}];
+  var ST=JSON.parse(localStorage.getItem('sf_st')||JSON.stringify(DS));
+  var NO=JSON.parse(localStorage.getItem('sf_no')||'[]');
+  var GA=JSON.parse(localStorage.getItem('sf_ga')||'[]');
+  var g=document.getElementById('tg');
+  if(g&&ST.length){
+    g.innerHTML=ST.map(function(s){
+      return '<div class="tc rv vis"><div class="tph">'+(s.photo?'<img src="'+s.photo+'" alt="'+s.name+'" onerror="this.style.display=\'none\'">':'')+'<i class="fas fa-user-circle" '+(s.photo?'style="display:none"':'')+'></i></div><div class="tin"><div class="tn">'+s.name+'</div><div class="tpos">'+s.position+'</div><div class="tcts">'+(s.phone?'<a href="tel:'+s.phone+'" class="tcl"><i class="fas fa-phone"></i>'+s.phone+'</a>':'')+(s.email?'<a href="mailto:'+s.email+'" class="tcl" style="font-size:11px"><i class="fas fa-envelope"></i>'+s.email+'</a>':'')+'</div></div></div>';
+    }).join('');
+  }
+  var ng=document.getElementById('ng');
+  var DN=[{id:1,title:'वार्षिक साधारण सभाको सूचना',body:'मिति २०८१ असार ३० गते बिहान १० बजे।',type:'urgent',date:'२०८१ असार १५'},{id:2,title:'कृषि कर्जामा विशेष छुट',body:'असार महिनामा विशेष छुट।',type:'normal',date:'२०८१ जेठ २०'}];
+  var notices=NO.length?NO:DN;
+  if(ng){
+    ng.innerHTML=notices.map(function(n){
+      return '<div class="nc '+(n.type==='urgent'?'urg':'')+' rv vis"><span class="nbdg '+(n.type==='urgent'?'ub':'nw')+'">'+(n.type==='urgent'?'🔴 जरुरी':'🟢 नयाँ')+'</span><div class="ndt"><i class="fas fa-calendar-alt"></i> '+n.date+'</div><div class="ntl">'+n.title+'</div><div class="nbd">'+n.body+'</div></div>';
+    }).join('');
+  }
+  var gg=document.getElementById('gg');
+  var DG=[{id:1,url:'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=600',caption:'कृषि कार्यक्रम'},{id:2,url:'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=600',caption:'किसान प्रशिक्षण'},{id:3,url:'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600',caption:'खेत भ्रमण'},{id:4,url:'https://images.unsplash.com/photo-1586771107445-d3ca888129ff?w=600',caption:'सदस्य भेला'},{id:5,url:'https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600',caption:'कृषि मेला'},{id:6,url:'https://images.unsplash.com/photo-1560493676-04071c5f467b?w=600',caption:'बाली निरीक्षण'}];
+  var gallery=GA.length?GA:DG;
+  if(gg){
+    gg.innerHTML=gallery.map(function(i){
+      return '<div class="gi rv vis" onclick="openLb(\''+i.url+'\')"><img src="'+i.url+'" alt="'+i.caption+'" loading="lazy"><div class="gov"><i class="fas fa-expand-arrows-alt"></i><span>'+i.caption+'</span></div></div>';
+    }).join('');
+  }
 });
 </script>
